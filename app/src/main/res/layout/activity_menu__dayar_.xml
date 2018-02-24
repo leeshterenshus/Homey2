@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.lee.minted.Menu_Dayar_Activity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="218dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/small_logo" />
+
+    <ImageButton
+        android:id="@+id/inforamtion_bu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/information" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="361dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="157dp"
+        android:layout_marginTop="156dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="164dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/dayarim" />
+
+        <ImageButton
+            android:id="@+id/tlonot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tlunot_label"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:srcCompat="@drawable/tlunot" />
+
+        <ImageButton
+            android:id="@+id/takalot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="25dp"
+            app:layout_constraintStart_toEndOf="@+id/tlonot"
+            app:layout_constraintTop_toTopOf="@+id/tlonot"
+            app:srcCompat="@drawable/takala" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="361dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="124dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/maazan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="25dp"
+            app:layout_constraintStart_toEndOf="@+id/takalot"
+            app:layout_constraintTop_toTopOf="@+id/Dayarim_Label"
+            app:srcCompat="@drawable/maazan" />
+
+        <ImageButton
+            android:id="@+id/heder_dayarim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="25dp"
+            app:layout_constraintStart_toStartOf="@+id/tlonot"
+            app:layout_constraintTop_toTopOf="@+id/forum"
+            app:srcCompat="@drawable/hadar_dayarim" />
+
+        <ImageButton
+            android:id="@+id/forum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/maazan"
+            app:layout_constraintStart_toEndOf="@+id/tlonot"
+            app:srcCompat="@drawable/forum" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

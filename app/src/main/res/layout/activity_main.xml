@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/הש"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/HomeBu_Dayar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="78dp"
+        android:text="ברוכים הבאים"
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/HomeBu_Vaad"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="@android:dimen/thumbnail_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/HomeBu_Dayar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:width="@android:dimen/thumbnail_width"
+        android:background="#69819d"
+        android:text="כניסת ועד"
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/HomeBu_Dayar"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="@android:dimen/thumbnail_width"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/HomeBu_Vaad"
+        android:layout_alignStart="@+id/HomeBu_Vaad"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="19dp"
+        android:width="@android:dimen/thumbnail_width"
+        android:background="#69819d"
+        android:text="כניסת דייר"
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
+
+</RelativeLayout>
