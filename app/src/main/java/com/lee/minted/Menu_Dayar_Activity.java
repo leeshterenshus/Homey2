@@ -20,7 +20,12 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
 
         ImageButton information_Button= (ImageButton)findViewById(R.id.inforamtion_bu);
 
-        
+        information_Button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Dayar_Activity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
