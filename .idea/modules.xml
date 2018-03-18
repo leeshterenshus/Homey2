@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Homey2.iml" filepath="$PROJECT_DIR$/.idea/Homey2.iml" />
+      <module fileurl="file://C:\Users\lee\Desktop\Minted\.idea\Homey2.iml" filepath="C:\Users\lee\Desktop\Minted\.idea\Homey2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Minted.iml" filepath="$PROJECT_DIR$/Minted.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

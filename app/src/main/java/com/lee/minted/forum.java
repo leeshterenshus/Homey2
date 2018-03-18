@@ -12,7 +12,6 @@ public class forum extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum);
-
         final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
 
         back.setOnClickListener(new View.OnClickListener() {

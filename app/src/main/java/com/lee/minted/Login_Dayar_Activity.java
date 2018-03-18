@@ -25,14 +25,5 @@ public class Login_Dayar_Activity extends AppCompatActivity {
             }
         });
 
-        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(Login_Dayar_Activity.this,Menu_Dayar_Activity.class
-                );
-                startActivity(intent);
-            }
-        });
     }
 }
