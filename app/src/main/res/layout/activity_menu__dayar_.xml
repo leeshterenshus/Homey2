@@ -124,5 +124,17 @@
             app:layout_constraintStart_toEndOf="@+id/tlonot_bu"
             app:srcCompat="@drawable/forum" />
     </LinearLayout>
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="34dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back"
+        android:layout_marginLeft="4dp" />
+
 
 </android.support.constraint.ConstraintLayout>

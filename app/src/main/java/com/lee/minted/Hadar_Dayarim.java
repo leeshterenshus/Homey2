@@ -1,12 +1,14 @@
 package com.lee.minted;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.EventLog;
-
+import android.view.View;
+import android.widget.ImageButton;
 
 
 import java.text.SimpleDateFormat;
@@ -20,6 +22,16 @@ public SimpleDateFormat dataForamtMonth=new SimpleDateFormat("MMM-YYYY", Locale.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hadar__dayarim);
+
+        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Hadar_Dayarim.this,Menu_Dayar_Activity.class
+                );
+                startActivity(intent);
+            }
+        });
 
       // final ActionBar actionBar= getSupportActionBar();
       // actionBar.setDisplayHomeAsUpEnabled(false);

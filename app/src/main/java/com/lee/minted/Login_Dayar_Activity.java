@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Login_Dayar_Activity extends AppCompatActivity {
 
@@ -20,6 +21,16 @@ public class Login_Dayar_Activity extends AppCompatActivity {
         login_Da_Bu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Login_Dayar_Activity.this, Menu_Dayar_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Login_Dayar_Activity.this,Menu_Dayar_Activity.class
+                );
                 startActivity(intent);
             }
         });
