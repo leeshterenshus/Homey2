@@ -17,8 +17,10 @@
 
     </string>
     <string name="inforantion">נהלי שימוש באפליקציה</string>
-    <string name="maazan_label">מאזן</string>
+    <string name="maazan_label">הכנסות והוצאות</string>
     <string name="heder_label">חדר דיירים</string>
+    <string name="dayarim"> דיירים</string>
+
     <string name="tlunot_label">תלונות שלי</string>
     <string name="takalot_label">תקלות</string>
     <string name="forum">פורום</string>
