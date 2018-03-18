@@ -25,7 +25,12 @@
         <activity android:name=".Login_Vaad_Activity" />
         <activity android:name=".Menu_Dayar_Activity" />
         <activity android:name=".Menu_Vaad_Activity" />
-        <activity android:name=".Hadar_Dayarim"></activity>
+        <activity android:name=".Hadar_Dayarim" />
+        <activity android:name=".takalot" />
+        <activity android:name=".tlunot" />
+        <activity android:name=".dayarim" />
+        <activity android:name=".forum" />
+        <activity android:name=".maazan"></activity>
     </application>
 
 </manifest>

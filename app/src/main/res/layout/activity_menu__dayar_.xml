@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/dayarim_bu"
             android:layout_width="164dp"
             android:layout_height="150dp"
             android:layout_weight="1"
@@ -53,7 +53,7 @@
             app:srcCompat="@drawable/dayarim" />
 
         <ImageButton
-            android:id="@+id/tlonot"
+            android:id="@+id/tlonot_bu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
@@ -65,14 +65,14 @@
             app:srcCompat="@drawable/tlunot" />
 
         <ImageButton
-            android:id="@+id/takalot"
+            android:id="@+id/takalot_bu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:padding="25dp"
-            app:layout_constraintStart_toEndOf="@+id/tlonot"
-            app:layout_constraintTop_toTopOf="@+id/tlonot"
+            app:layout_constraintStart_toEndOf="@+id/tlonot_bu"
+            app:layout_constraintTop_toTopOf="@+id/tlonot_bu"
             app:srcCompat="@drawable/takala" />
 
     </LinearLayout>
@@ -89,39 +89,39 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/maazan"
+            android:id="@+id/maazan_bu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:padding="25dp"
-            app:layout_constraintStart_toEndOf="@+id/takalot"
+            app:layout_constraintStart_toEndOf="@+id/takalot_bu"
             app:layout_constraintTop_toTopOf="@+id/Dayarim_Label"
             app:srcCompat="@drawable/maazan" />
 
         <ImageButton
-            android:id="@+id/heder_dayarim"
+            android:id="@+id/heder_dayarim_bu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:padding="25dp"
-            app:layout_constraintStart_toStartOf="@+id/tlonot"
-            app:layout_constraintTop_toTopOf="@+id/forum"
+            app:layout_constraintStart_toStartOf="@+id/tlonot_bu"
+            app:layout_constraintTop_toTopOf="@+id/forum_bu"
             app:srcCompat="@drawable/hadar_dayarim" />
 
         <ImageButton
-            android:id="@+id/forum"
+            android:id="@+id/forum_bu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:padding="25dp"
-            app:layout_constraintBottom_toBottomOf="@+id/maazan"
-            app:layout_constraintStart_toEndOf="@+id/tlonot"
+            app:layout_constraintBottom_toBottomOf="@+id/maazan_bu"
+            app:layout_constraintStart_toEndOf="@+id/tlonot_bu"
             app:srcCompat="@drawable/forum" />
     </LinearLayout>
 

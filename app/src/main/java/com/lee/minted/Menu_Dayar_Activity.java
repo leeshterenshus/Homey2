@@ -17,15 +17,67 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_menu__dayar_);
 
 
+        final ImageButton Hadar_dayarim= (ImageButton)findViewById(R.id.heder_dayarim_bu);
+        final ImageButton information= (ImageButton)findViewById(R.id.inforamtion_bu);
+        final ImageButton dayarim= (ImageButton)findViewById(R.id.dayarim_bu);
+        final ImageButton tlunot= (ImageButton)findViewById(R.id.tlonot_bu);
+        final ImageButton takalot= (ImageButton)findViewById(R.id.takalot_bu);
+        final ImageButton forum= (ImageButton)findViewById(R.id.forum_bu);
+        final ImageButton maazan= (ImageButton)findViewById(R.id.maazan_bu);
 
-        ImageButton information_Button= (ImageButton)findViewById(R.id.inforamtion_bu);
 
-        information_Button.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        Hadar_dayarim.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Dayar_Activity.this, MainActivity.class);
+                Intent intent = new Intent(Menu_Dayar_Activity.this,Hadar_Dayarim.class
+                );
                 startActivity(intent);
             }
         });
+
+
+        dayarim.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Dayar_Activity.this,dayarim.class
+                );
+                startActivity(intent);
+            }
+        });
+
+        tlunot.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Dayar_Activity.this,tlunot.class
+                );
+                startActivity(intent);
+            }
+        });
+
+        takalot.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Dayar_Activity.this,takalot.class
+                );
+                startActivity(intent);
+            }
+        });
+        forum.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Dayar_Activity.this,forum.class
+                );
+                startActivity(intent);
+            }
+        });
+
+        maazan.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Dayar_Activity.this,maazan.class
+                );
+                startActivity(intent);
+            }
+        });
+
     }
 
 
