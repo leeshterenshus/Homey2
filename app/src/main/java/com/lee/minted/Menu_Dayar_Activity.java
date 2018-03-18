@@ -26,7 +26,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         final ImageButton maazan= (ImageButton)findViewById(R.id.maazan_bu);
 
 
-
+//cc
 
 
 
