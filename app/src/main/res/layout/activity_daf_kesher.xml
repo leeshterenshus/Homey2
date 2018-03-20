@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.lee.minted.daf_kesher">
+
+    <TextView
+        android:id="@+id/titleDafKesher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:text="@string/dayarim"
+        android:textSize="40dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/back_bu"
+        android:layout_width="34dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back"
+        android:layout_marginLeft="4dp" />
+
+    <Button
+        android:id="@+id/goToProfile"
+        android:layout_width="115dp"
+        android:layout_height="36dp"
+        android:background="#d3e2dd"
+        android:text="הפרופיל שלי"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="229dp"
+        tools:layout_editor_absoluteY="127dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:srcCompat="@drawable/search"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="131dp"
+        tools:ignore="MissingConstraints" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="165dp"
+        android:layout_height="61dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="121dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="120dp"
+            android:layout_height="29dp"
+            android:background="#dee2e1"
+            android:hint="חיפוש" />
+    </android.support.design.widget.TextInputLayout>
+</android.support.constraint.ConstraintLayout>

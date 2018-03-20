@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +30,14 @@
         <activity android:name=".tlunot" />
         <activity android:name=".dayarim" />
         <activity android:name=".forum" />
-        <activity android:name=".maazan"></activity>
+        <activity android:name=".maazan" />
+        <activity android:name=".daf_kesher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
