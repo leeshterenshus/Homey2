@@ -14,6 +14,7 @@
         android:layout_marginTop="52dp"
         android:gravity="center"
         android:text="@string/dayarim"
+        android:textColor="@android:color/background_dark"
         android:textSize="40dip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -32,16 +33,15 @@
         app:srcCompat="@drawable/back"
         android:layout_marginLeft="4dp" />
 
-    <Button
-        android:id="@+id/goToProfile"
-        android:layout_width="115dp"
-        android:layout_height="36dp"
-        android:background="#d3e2dd"
-        android:text="הפרופיל שלי"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="127dp"
-        tools:ignore="MissingConstraints" />
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/goToProfile"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="193dp"
+        tools:layout_editor_absoluteY="121dp" />
 
     <ImageView
         android:id="@+id/imageView"

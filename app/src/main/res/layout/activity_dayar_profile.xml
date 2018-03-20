@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.lee.minted.dayarProfile">
+
+    <TextView
+        android:id="@+id/titleProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:text="הפרופיל שלי"
+        android:textColor="@android:color/background_dark"
+        android:textSize="40dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/back_bu"
+        android:layout_width="34dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back"
+        android:layout_marginLeft="4dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="327dp"
+        android:layout_height="383dp"
+        app:srcCompat="@drawable/half"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="132dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="איש קשר"
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="266dp"
+        tools:layout_editor_absoluteY="203dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="טלפון"
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="298dp"
+        tools:layout_editor_absoluteY="242dp"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/showPhoneCheck"
+        android:layout_width="42dp"
+        android:layout_height="39dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteX="326dp"
+        tools:layout_editor_absoluteY="279dp" />
+
+    <TextView
+        android:id="@+id/showPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="הצג מספר טלפון בדף דיירים"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="286dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/parking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="חניה"
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="306dp"
+        tools:layout_editor_absoluteY="326dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/garage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="מחסן"
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="298dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+    <ImageButton
+        android:id="@+id/ishur"
+        android:layout_width="127dp"
+        android:layout_height="52dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ishur"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="440dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editPhone"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="233dp" />
+
+    <EditText
+        android:id="@+id/editContact"
+        android:layout_width="174dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="198dp" />
+
+    <EditText
+        android:id="@+id/editParking"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="318dp" />
+
+    <EditText
+        android:id="@+id/editGarage"
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+</android.support.constraint.ConstraintLayout>

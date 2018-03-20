@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class daf_kesher extends AppCompatActivity {
+public class dayarProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daf_kesher);
+        setContentView(R.layout.activity_dayar_profile);
 
         final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(daf_kesher.this,Menu_Dayar_Activity.class
+                Intent intent = new Intent(dayarProfile.this,daf_kesher.class
                 );
                 startActivity(intent);
             }
