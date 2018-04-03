@@ -22,5 +22,15 @@ public class daf_kesher extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        final ImageButton go_profile= (ImageButton)findViewById(R.id.go_to_profile_bu);
+
+        go_profile.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(daf_kesher.this,dayarProfile.class
+                );
+                startActivity(intent);
+            }
+        });
     }
 }

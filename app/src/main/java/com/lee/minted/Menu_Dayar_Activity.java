@@ -16,7 +16,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__dayar_);
 
-
+        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
         final ImageButton Hadar_dayarim= (ImageButton)findViewById(R.id.heder_dayarim_bu);
         final ImageButton information= (ImageButton)findViewById(R.id.inforamtion_bu);
         final ImageButton dayarim= (ImageButton)findViewById(R.id.dayarim_bu);
@@ -27,6 +27,14 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
 
 
 //cc
+
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Dayar_Activity.this,MainActivity.class
+                );
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -41,7 +49,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
 
         dayarim.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Dayar_Activity.this,dayarim.class
+                Intent intent = new Intent(Menu_Dayar_Activity.this,daf_kesher.class
                 );
                 startActivity(intent);
             }
