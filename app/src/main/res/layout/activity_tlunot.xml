@@ -7,27 +7,63 @@
     android:background="@drawable/background"
     tools:context="com.lee.minted.tlunot">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tlunot_label"
-        android:layout_marginTop="83dp"
-        android:gravity="center"
-        android:textSize="40dip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/back_bu"
-        android:layout_width="34dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back"
-        android:layout_marginLeft="4dp" />
+        <ImageButton
+            android:id="@+id/add_tluna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tluna_title"
+            android:layout_marginEnd="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            app:srcCompat="@android:drawable/ic_menu_add"
+            tools:layout_editor_absoluteX="337dp"
+            tools:layout_editor_absoluteY="149dp" />
+
+        <ImageButton
+            android:id="@+id/back_bu"
+            android:layout_width="34dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back" />
+
+        <TextView
+            android:id="@+id/tluna_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/back_bu"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:gravity="center"
+            android:text="@string/tlunot_label"
+            android:textSize="40dip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/add_tluna"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/add_tluna"
+            android:layout_toStartOf="@+id/add_tluna"
+            android:text="@string/add_tluna"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

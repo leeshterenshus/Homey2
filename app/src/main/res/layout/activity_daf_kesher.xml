@@ -8,81 +8,72 @@
     tools:context="com.lee.minted.daf_kesher"
     tools:layout_editor_absoluteY="25dp">
 
-    <TextView
-        android:id="@+id/titleDafKesher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:layout_marginEnd="129dp"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:text="@string/dayarim"
-        android:textColor="@android:color/background_dark"
-        android:textSize="40dip"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back_bu"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/back_bu"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="92dp"
-        android:layout_marginStart="4dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/titleDafKesher"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
-
-    <ImageButton
-        android:id="@+id/go_to_profile_bu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
-        android:layout_marginTop="9dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/titleDafKesher"
-        app:srcCompat="@drawable/go_to_profile"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="21dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="23dp"
-        app:layout_constraintBottom_toBottomOf="@+id/go_to_profile_bu"
-        app:layout_constraintEnd_toStartOf="@+id/go_to_profile_bu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleDafKesher"
-        app:srcCompat="@drawable/search"
-        tools:ignore="MissingConstraints" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="443dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginStart="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/go_to_profile_bu"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleDafKesher"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="120dp"
-            android:layout_height="29dp"
-            android:background="#dee2e1"
-            android:hint="חיפוש" />
-    </android.support.design.widget.TextInputLayout>
+        <SearchView
+            android:id="@+id/searchView2"
+            android:layout_width="169dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/dayarim_title"
+            android:layout_marginLeft="26dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/bg_calander"
+            tools:layout_editor_absoluteX="0dp">
+
+        </SearchView>
+
+        <TextView
+            android:id="@+id/dayarim_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:gravity="center"
+            android:text="@string/dayarim"
+            android:textColor="@android:color/background_dark"
+            android:textSize="40dip"
+            app:layout_constraintBottom_toTopOf="@+id/go_to_profile_bu"
+            app:layout_constraintStart_toEndOf="@+id/back_bu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.564" />
+
+        <ImageButton
+            android:id="@+id/back_bu"
+            android:layout_width="75dp"
+            android:layout_height="76dp"
+            android:layout_above="@+id/searchView2"
+            android:layout_alignEnd="@+id/searchView2"
+            android:layout_alignRight="@+id/searchView2"
+            android:layout_marginBottom="22dp"
+            android:layout_marginEnd="126dp"
+            android:layout_marginRight="126dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back" />
+
+        <Button
+            android:id="@+id/go_to_profile_bu"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/searchView2"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginRight="33dp"
+            android:layout_weight="1"
+            android:text="הפרופיל שלי"
+            android:textSize="18sp" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

@@ -32,6 +32,15 @@ public SimpleDateFormat dataForamtMonth=new SimpleDateFormat("MMM-YYYY", Locale.
                 startActivity(intent);
             }
         });
+        final ImageButton add= (ImageButton)findViewById(R.id.add_bu);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Hadar_Dayarim.this,add_activity_toCalendar_dayar.class
+                );
+                startActivity(intent);
+            }
+        });
 
       // final ActionBar actionBar= getSupportActionBar();
       // actionBar.setDisplayHomeAsUpEnabled(false);

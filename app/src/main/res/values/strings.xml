@@ -17,13 +17,21 @@
 
     </string>
     <string name="inforantion">נהלי שימוש באפליקציה</string>
+    <string name="add_activity">הוספת אירוע</string>
+
     <string name="maazan_label">הכנסות והוצאות</string>
     <string name="heder_label">חדר דיירים</string>
     <string name="dayarim"> דיירים</string>
 
     <string name="tlunot_label">תלונות שלי</string>
-    <string name="takalot_label">תקלות</string>
+    <string name="takalot_label"> תקלות ואירועים</string>
     <string name="forum">פורום</string>
+    <string name="add_tluna">הוסף תלונה</string>
+    <string-array name="unitmeasurs">
+    <item>La</item>>
+    <item>Ba</item>>
+    </string-array>
+
     <string name="hukim">פונקציות האפליקציה והתשקורת בה נועדו לשמש את המשתמשים וליצור חיים בטוחים וראייה שקופה בהתאם לכך מתחייב כל משתמש שלא למסור מידע כוזב או לשלוח הודעות סרק במטרה להטעות את שאר המשתמשים לא להשתמש באפליקציה לתורך שליחת הודעות פוגעניות או הודעות בעלי תוכן בלתי הולם שלא לעשות שימוש באפליקציה על מנת לפגוע בפרטיות של משתמש אחר
     </string>
     <string name="title_activity_popup_information">popup_information</string>

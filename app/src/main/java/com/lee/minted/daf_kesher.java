@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class daf_kesher extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class daf_kesher extends AppCompatActivity {
             }
         });
 
-        final ImageButton go_profile= (ImageButton)findViewById(R.id.go_to_profile_bu);
+        final Button go_profile= (Button)findViewById(R.id.go_to_profile_bu);
 
         go_profile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

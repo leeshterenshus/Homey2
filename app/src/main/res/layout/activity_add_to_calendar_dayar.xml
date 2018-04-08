@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.lee.minted.add_activity_toCalendar_dayar">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="92dp"
+            android:text="@string/add_activity"
+            android:textSize="36sp" />
+
+        <ImageButton
+            android:id="@+id/back_bu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/frameLayout2"
+            android:layout_marginBottom="77dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_toLeftOf="@+id/title"
+            android:layout_toStartOf="@+id/title"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/back" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout2"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/title"
+            android:layout_marginEnd="36dp"
+            android:layout_marginRight="36dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/half">
+
+            <EditText
+                android:id="@+id/apartment"
+                android:layout_width="180dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="120dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:ems="10"
+                android:inputType="time" />
+
+            <TextView
+                android:id="@+id/date_picker"
+                android:layout_width="180dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@android:drawable/editbox_background_normal" />
+
+            <TextView
+                android:id="@+id/time_picker"
+                android:layout_width="180dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="75dp"
+                android:background="@android:drawable/editbox_background_normal" />
+
+            <Button
+                android:id="@+id/ok_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="200dp"
+                android:text="אישור" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/frameLayout2"
+            android:layout_alignRight="@+id/frameLayout2"
+            android:layout_alignTop="@+id/frameLayout2"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="40dp"
+            android:text="תאריך"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/frameLayout2"
+            android:layout_alignRight="@+id/frameLayout2"
+            android:layout_below="@+id/date"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:text="שעה"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/frameLayout2"
+            android:layout_alignRight="@+id/frameLayout2"
+            android:layout_below="@+id/date"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="70dp"
+            android:text="דירה"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

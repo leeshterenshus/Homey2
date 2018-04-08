@@ -7,6 +7,13 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_foreground"
@@ -28,7 +35,6 @@
         <activity android:name=".Hadar_Dayarim" />
         <activity android:name=".takalot" />
         <activity android:name=".tlunot" />
-        <activity android:name=".dayarim" />
         <activity android:name=".forum" />
         <activity android:name=".maazan" />
         <activity android:name=".daf_kesher">
@@ -38,7 +44,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".dayarProfile"></activity>
+        <activity android:name=".dayarProfile" />
+        <activity android:name=".add_activity_toCalendar_dayar" />
+        <activity android:name=".add_takala"></activity>
     </application>
 
 </manifest>
