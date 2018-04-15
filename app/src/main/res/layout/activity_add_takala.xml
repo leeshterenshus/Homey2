@@ -64,6 +64,23 @@
                 tools:layout_editor_absoluteX="162dp"
                 tools:layout_editor_absoluteY="513dp" />
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="45dp"
+                android:entries="@array/unitmeasurs" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="100dp"
+                android:text="תוכן"
+                android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
@@ -72,14 +89,6 @@
                 android:layout_marginTop="45dp"
                 android:text="נושא"
                 android:textSize="18sp" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="45dp"
-                android:entries="@array/unitmeasurs" />
         </FrameLayout>
 
     </RelativeLayout>
