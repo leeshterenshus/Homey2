@@ -24,7 +24,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -37,16 +36,10 @@
         <activity android:name=".tlunot" />
         <activity android:name=".forum" />
         <activity android:name=".maazan" />
-        <activity android:name=".daf_kesher">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".daf_kesher"/>
         <activity android:name=".dayarProfile" />
         <activity android:name=".add_activity_toCalendar_dayar" />
-        <activity android:name=".add_takala"></activity>
+        <activity android:name=".add_takala"/>
     </application>
 
 </manifest>

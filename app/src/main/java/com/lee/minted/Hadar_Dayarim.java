@@ -17,7 +17,8 @@ import java.util.Locale;
 
 public class Hadar_Dayarim extends AppCompatActivity {
 
-public SimpleDateFormat dataForamtMonth=new SimpleDateFormat("MMM-YYYY", Locale.getDefault());
+public SimpleDateFormat dataForamtMonth= new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
