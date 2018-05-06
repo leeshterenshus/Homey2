@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lee.minted.Users.User;
+import com.lee.minted.Users.UserAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mRef;
     private FirebaseDatabase mDatabase;
-    final List<User> usersList = new ArrayList<>();
+    final List<UserAuth> usersAuthList = new ArrayList<>();
     private String TAG = "MainActivity";
 
 
@@ -41,31 +42,29 @@ public class MainActivity extends AppCompatActivity {
 
         log_Dayar_Bu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Login_Dayar_Activity.class);
+                Intent intent = new Intent(MainActivity.this, Login_Activity.class);
                 startActivity(intent);
             }
         });
         log_Vaad_Bu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Login_Vaad_Activity.class);
+                Intent intent = new Intent(MainActivity.this, Login_Activity.class);
                 startActivity(intent);
             }
         });
 
 
         mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference("users");
+        mRef = mDatabase.getReference("usersAuth");
 
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
 
                 // A new comment has been added, add it to the displayed list
-                User user = dataSnapshot.getValue(User.class);
+                UserAuth userAuth = dataSnapshot.getValue(UserAuth.class);
+                usersAuthList.add(userAuth);
                 String commentKey = dataSnapshot.getKey();
-
-                // ...
             }
 
             @Override
@@ -114,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void writeNewUser(String userId, String name, String phone, int appatment, int floor) {
-        User user = new User(name, phone, appatment, floor);
+    private void writeNewUser(String userId, String name, String phone, int appatment, int floor, boolean isManager) {
+        User user = new User(name, phone, appatment, floor, isManager);
         mRef.child("users").child(userId).setValue(user);
     }
 
