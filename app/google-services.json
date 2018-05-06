@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "319507434066",
+    "firebase_url": "https://homey2-aa76a.firebaseio.com",
+    "project_id": "homey2-aa76a",
+    "storage_bucket": "homey2-aa76a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319507434066:android:4a896d69df02f13e",
+        "android_client_info": {
+          "package_name": "com.lee.minted"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319507434066-rjfdj1s5b9jsujjti591okc580jo0r1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lee.minted",
+            "certificate_hash": "401a9d943ace04ecbe22f9a997e01acf403973ae"
+          }
+        },
+        {
+          "client_id": "319507434066-4hmfjuav7icrd3fn8t027vreupv1l1k8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0DmpjYO1atxrJoejluwh9VIKIRGcyPP0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319507434066-4hmfjuav7icrd3fn8t027vreupv1l1k8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
