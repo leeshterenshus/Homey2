@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="com.lee.minted.Login_Dayar_Activity"
+    tools:context="com.lee.minted.Login_Activity"
     tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout
@@ -19,22 +19,25 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/Dayar_username"
+            android:id="@+id/usernameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/prompt_email"
+            android:gravity="center"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/ayar_password"
+            android:id="@+id/passwordET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="סיסמא"
+            android:gravity="center"
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/Dayer_Login_Bu"
+            android:id="@+id/loginBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/action_sign_in" />
@@ -42,14 +45,4 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/back_bu"
-        android:layout_width="34dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
 </android.support.constraint.ConstraintLayout>

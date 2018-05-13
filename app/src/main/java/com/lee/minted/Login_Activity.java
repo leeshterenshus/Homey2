@@ -1,10 +1,12 @@
 package com.lee.minted;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -42,6 +44,8 @@ public class Login_Activity extends AppCompatActivity {
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 EditText usernameET = (EditText)findViewById(R.id.usernameET);
                 EditText passwordET = (EditText)findViewById(R.id.passwordET);
                 String username = usernameET.getText().toString();
@@ -57,17 +61,31 @@ public class Login_Activity extends AppCompatActivity {
                             ua.getPassword().equals(password)){
                         if (usersMap.get(username).isManager){
                             Intent intent = new Intent(Login_Activity.this, Menu_Dayar_Activity.class);
+                            intent.putExtra("username",username);
                             startActivity(intent);
+                            return;
                         } else {
                             Intent intent = new Intent(Login_Activity.this, Menu_Vaad_Activity.class);
+                            intent.putExtra("username",username);
                             startActivity(intent);
+                            return;
                         }
                     }
                 }
+                Toast.makeText(Login_Activity.this,"שם משתמש ו\\או סיסמא אינם נכונים", Toast.LENGTH_LONG).show();
             }
         });
-
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        EditText usernameET = (EditText)findViewById(R.id.usernameET);
+        EditText passwordET = (EditText)findViewById(R.id.passwordET);
+        usernameET.setText("");
+        passwordET.setText("");
+    }
+
 
     private void initDatabases() {
         mDatabase = FirebaseDatabase.getInstance();
@@ -81,7 +99,6 @@ public class Login_Activity extends AppCompatActivity {
 
                 // A new comment has been added, add it to the displayed list
                 User user = dataSnapshot.getValue(User.class);
-                usersList.add(user);
                 usersMap.put(user.username, user);
                 String commentKey = dataSnapshot.getKey();
             }

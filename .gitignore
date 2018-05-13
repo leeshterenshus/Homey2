@@ -1,14 +1,2 @@
-<<<<<<< HEAD
-.idea/
-=======
-*.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
 /build
-/captures
-.externalNativeBuild
-.idea
->>>>>>> changed app too show only one icon
+.idea/*

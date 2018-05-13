@@ -27,8 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login_Dayar_Activity" />
-        <activity android:name=".Login_Vaad_Activity" />
+        <activity android:name=".Login_Activity" />
         <activity android:name=".Menu_Dayar_Activity" />
         <activity android:name=".Menu_Vaad_Activity" />
         <activity android:name=".Hadar_Dayarim" />
