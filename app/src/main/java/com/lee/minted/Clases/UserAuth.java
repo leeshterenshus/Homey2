@@ -1,4 +1,4 @@
-package com.lee.minted.Users;
+package com.lee.minted.Clases;
 
 public class UserAuth {
 

@@ -37,5 +37,16 @@
     <string name="title_activity_popup_information">popup_information</string>
     <string name="hadar_dayarim">חדר דיירים</string>
 
+    <string name="complaint_title">לחץ לבחירת נושא</string>
+
+    <string-array name="complaint_title_array">
+        <item>חדר אשפה</item>
+        <item>מעליות</item>
+        <item>לובי</item>
+        <item>חניה</item>
+        <item>מסדרון</item>
+        <item>אחר..</item>
+    </string-array>
+
 
 </resources>

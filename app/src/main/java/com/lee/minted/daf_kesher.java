@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
@@ -18,8 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.lee.minted.Users.User;
-import com.lee.minted.Users.UserAuth;
+import com.lee.minted.Clases.User;
 
 import java.util.HashMap;
 
@@ -140,7 +138,8 @@ public class daf_kesher extends AppCompatActivity {
             Space space = new Space(daf_kesher.this);
             space.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.FILL_PARENT,
-                    5));
+                    15));
+            linearLayout.addView(space);
             linearLayout.addView(txt);
         }
 

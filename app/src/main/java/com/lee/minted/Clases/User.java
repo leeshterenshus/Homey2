@@ -1,6 +1,9 @@
-package com.lee.minted.Users;
+package com.lee.minted.Clases;
+import java.io.Serializable;
 
-public class User {
+@SuppressWarnings("serial")
+
+public class User implements Serializable{
 
     public String username;
     public String phone;

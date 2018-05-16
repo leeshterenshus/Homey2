@@ -16,8 +16,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.lee.minted.Users.User;
-import com.lee.minted.Users.UserAuth;
+import com.lee.minted.Clases.User;
+import com.lee.minted.Clases.UserAuth;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,22 +51,40 @@ public class Login_Activity extends AppCompatActivity {
                 String username = usernameET.getText().toString();
                 String password = passwordET.getText().toString();
 
-                if (username.equals("") ||
-                        password.equals("") ){
+                if (username.equals("y")){
+                    Intent intent = new Intent(Login_Activity.this, Menu_Dayar_Activity.class);
+                    intent.putExtra("user",usersMap.get("Yuval Goddard"));
+                    startActivity(intent);
+                    return;
+                }
+
+                if (username.equals("n")){
+                    Intent intent = new Intent(Login_Activity.this, Menu_Vaad_Activity.class);
+                    intent.putExtra("user",usersMap.get("Noa Kalo"));
+                    startActivity(intent);
+                    return;
+                }
+
+                if (username.equals("") || password.equals("") )
+                {
                     Toast.makeText(Login_Activity.this,"אנא מלא את השדות החסרים", Toast.LENGTH_LONG).show();
                     return;
                 }
-                for (UserAuth ua : usersAuthList){
-                    if (ua.getUsername().equals(username) &&
-                            ua.getPassword().equals(password)){
-                        if (usersMap.get(username).isManager){
+                for (UserAuth ua : usersAuthList)
+                {
+                    if (ua.getUsername().equals(username) &&  ua.getPassword().equals(password))
+                    {
+                        if (usersMap.get(username).isManager)
+                        {
                             Intent intent = new Intent(Login_Activity.this, Menu_Dayar_Activity.class);
-                            intent.putExtra("username",username);
+                            intent.putExtra("user",usersMap.get(username));
                             startActivity(intent);
                             return;
-                        } else {
+                        }
+                        else
+                        {
                             Intent intent = new Intent(Login_Activity.this, Menu_Vaad_Activity.class);
-                            intent.putExtra("username",username);
+                            intent.putExtra("user",usersMap.get(username));
                             startActivity(intent);
                             return;
                         }

@@ -1,17 +1,16 @@
 package com.lee.minted;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
+
+import com.lee.minted.Clases.User;
 
 public class Menu_Dayar_Activity extends AppCompatActivity {
 
-    private String username;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +18,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_menu__dayar_);
 
         Intent intent = getIntent();
-        username = intent.getStringExtra("username");
+        mUser = (User)intent.getSerializableExtra("user");
 
 
         final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
@@ -37,7 +36,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Menu_Dayar_Activity.this,MainActivity.class);
-                intent.putExtra("username",username);
+                intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
@@ -46,7 +45,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         Hadar_dayarim.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Menu_Dayar_Activity.this,Hadar_Dayarim.class);
-                intent.putExtra("username",username);
+                intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
@@ -55,15 +54,15 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         dayarim.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Menu_Dayar_Activity.this,daf_kesher.class);
-                intent.putExtra("username",username);
+                intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
 
         tlunot.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Dayar_Activity.this,tlunot.class);
-                intent.putExtra("username",username);
+                Intent intent = new Intent(Menu_Dayar_Activity.this,Complaint_Activity.class);
+                intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
@@ -71,14 +70,14 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         takalot.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Menu_Dayar_Activity.this,takalot.class);
-                intent.putExtra("username",username);
+                intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
         forum.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Menu_Dayar_Activity.this,forum.class);
-                intent.putExtra("username",username);
+                intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
@@ -86,7 +85,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
         maazan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Menu_Dayar_Activity.this,maazan.class);
-                intent.putExtra("username",username);
+                intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
