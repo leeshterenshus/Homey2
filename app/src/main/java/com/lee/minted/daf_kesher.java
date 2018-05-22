@@ -142,6 +142,5 @@ public class daf_kesher extends AppCompatActivity {
             linearLayout.addView(space);
             linearLayout.addView(txt);
         }
-
     }
 }
