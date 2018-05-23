@@ -1,8 +1,15 @@
-/build
+*.iml
 <<<<<<< HEAD
-.idea/*
+/.gradle/
 =======
+.gradle/
+/.gradle
+>>>>>>> calendar
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
 /captures
 .externalNativeBuild
 .idea
->>>>>>> b70a8f4bd30aad3a07cc8fb7f579c78e751e3479

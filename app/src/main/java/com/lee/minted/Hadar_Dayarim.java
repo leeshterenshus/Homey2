@@ -10,22 +10,22 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog;
-import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener;
-import com.applikeysolutions.cosmocalendar.model.Day;
-import com.applikeysolutions.cosmocalendar.selection.BaseSelectionManager;
-import com.applikeysolutions.cosmocalendar.selection.OnDaySelectedListener;
-import com.applikeysolutions.cosmocalendar.selection.SingleSelectionManager;
-import com.applikeysolutions.cosmocalendar.settings.appearance.ConnectedDayIconPosition;
-import com.applikeysolutions.cosmocalendar.settings.lists.connected_days.ConnectedDays;
-import com.applikeysolutions.cosmocalendar.view.CalendarView;
-import com.applikeysolutions.cosmocalendar.selection.MultipleSelectionManager;
-import com.applikeysolutions.cosmocalendar.selection.criteria.BaseCriteria;
-import com.applikeysolutions.cosmocalendar.selection.criteria.WeekDayCriteria;
-import com.applikeysolutions.cosmocalendar.selection.criteria.month.CurrentMonthCriteria;
-import com.applikeysolutions.cosmocalendar.selection.criteria.month.NextMonthCriteria;
-import com.applikeysolutions.cosmocalendar.selection.criteria.month.PreviousMonthCriteria;
-import com.applikeysolutions.cosmocalendar.utils.SelectionType;
+//import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog;
+//import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener;
+//import com.applikeysolutions.cosmocalendar.model.Day;
+//import com.applikeysolutions.cosmocalendar.selection.BaseSelectionManager;
+//import com.applikeysolutions.cosmocalendar.selection.OnDaySelectedListener;
+//import com.applikeysolutions.cosmocalendar.selection.SingleSelectionManager;
+//import com.applikeysolutions.cosmocalendar.settings.appearance.ConnectedDayIconPosition;
+//import com.applikeysolutions.cosmocalendar.settings.lists.connected_days.ConnectedDays;
+//import com.applikeysolutions.cosmocalendar.view.CalendarView;
+//import com.applikeysolutions.cosmocalendar.selection.MultipleSelectionManager;
+//import com.applikeysolutions.cosmocalendar.selection.criteria.BaseCriteria;
+//import com.applikeysolutions.cosmocalendar.selection.criteria.WeekDayCriteria;
+//import com.applikeysolutions.cosmocalendar.selection.criteria.month.CurrentMonthCriteria;
+//import com.applikeysolutions.cosmocalendar.selection.criteria.month.NextMonthCriteria;
+//import com.applikeysolutions.cosmocalendar.selection.criteria.month.PreviousMonthCriteria;
+//import com.applikeysolutions.cosmocalendar.utils.SelectionType;
 
 
 
@@ -42,7 +42,7 @@ import java.util.TreeSet;
 public class Hadar_Dayarim extends AppCompatActivity {
 
 
-private CalendarView mCalendarView;
+//private CalendarView mCalendarView;
 private Calendar calendar;
 private Set<Long> days = new TreeSet<>();
 public SimpleDateFormat dataForamtMonth= new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
@@ -53,28 +53,28 @@ public SimpleDateFormat dataForamtMonth= new SimpleDateFormat("yyyy/MM/dd", Loca
         setContentView(R.layout.activity_hadar_dayarim);
 
         initButtons();
-        setCalendar();
+//        setCalendar();
 
     }
 
-    private void setCalendar() {
-        mCalendarView = (CalendarView)findViewById(R.id.calendar_view);
-        mCalendarView.setCalendarOrientation(OrientationHelper.HORIZONTAL);
-        mCalendarView.setWeekendDays(new HashSet(){{
-            add(Calendar.FRIDAY);
-            add(Calendar.SATURDAY);
-        }});
-        mCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
-        mCalendarView.setSelectionType(SelectionType.SINGLE);
-        mCalendarView.setShowDaysOfWeekTitle(true);
-        days.add(calendar.getTimeInMillis());
-        days.add(1526841476296L);
-        int textColor = Color.parseColor("#ff0000");
-        int selectedTextColor = Color.parseColor("#ff4000");
-        int disabledTextColor = Color.parseColor("#ff8000");
-        ConnectedDays connectedDays = new ConnectedDays(days, textColor, selectedTextColor, disabledTextColor);
-        mCalendarView.addConnectedDays(connectedDays);
-        mCalendarView.setSelectedDayBackgroundColor(Color.parseColor("#ffff4d"));
+//    private void setCalendar() {
+//        mCalendarView = (CalendarView)findViewById(R.id.calendar_view);
+//        mCalendarView.setCalendarOrientation(OrientationHelper.HORIZONTAL);
+//        mCalendarView.setWeekendDays(new HashSet(){{
+//            add(Calendar.FRIDAY);
+//            add(Calendar.SATURDAY);
+//        }});
+//        mCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
+//        mCalendarView.setSelectionType(SelectionType.SINGLE);
+//        mCalendarView.setShowDaysOfWeekTitle(true);
+//        days.add(calendar.getTimeInMillis());
+//        days.add(1526841476296L);
+//        int textColor = Color.parseColor("#ff0000");
+//        int selectedTextColor = Color.parseColor("#ff4000");
+//        int disabledTextColor = Color.parseColor("#ff8000");
+//        ConnectedDays connectedDays = new ConnectedDays(days, textColor, selectedTextColor, disabledTextColor);
+//        mCalendarView.addConnectedDays(connectedDays);
+//        mCalendarView.setSelectedDayBackgroundColor(Color.parseColor("#ffff4d"));
 //        SingleSelectionManager a = mCalendarView.getSelectionManager();
 //        mCalendarView.setSelectionManager(new BaseSelectionManager() {
 //            @Override
@@ -93,7 +93,7 @@ public SimpleDateFormat dataForamtMonth= new SimpleDateFormat("yyyy/MM/dd", Loca
 //            }
 //        });
 
-    }
+//    }
 
     private void initButtons() {
         calendar = Calendar.getInstance();

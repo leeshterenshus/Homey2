@@ -1,156 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="com.lee.minted.Menu_Dayar_Activity"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context="com.lee.minted.Menu_Vaad_Activity"
+    tools:layout_editor_absoluteY="25dp"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-
-        android:layout_height="218dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/small_logo" />
-
-    <ImageButton
-        android:id="@+id/inforamtion_bu"
-        android:layout_width="wrap_content"
-        android:alpha=".90"
-
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/information" />
+        android:layout_marginBottom="35dp">
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="361dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="157dp"
-        android:layout_marginTop="156dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/small_logo" />
 
         <ImageButton
-            android:id="@+id/dayarim_bu"
-            android:layout_width="164dp"
-            android:layout_height="150dp"
-            android:alpha=".90"
-
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/dayarim" />
-
-        <ImageButton
-            android:id="@+id/tlonot_bu"
+            android:id="@+id/imageButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:alpha=".90"
-
-            android:layout_marginBottom="3dp"
-            android:layout_weight="1"
+            android:layout_gravity="top|right"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
-            android:padding="25dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tlunot_label"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:srcCompat="@drawable/information" />
+    </FrameLayout>
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_complaints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha=".90"
+            android:background="@android:color/transparent"
             app:srcCompat="@drawable/tlunot" />
 
         <ImageButton
-            android:id="@+id/takalot_bu"
+            android:id="@+id/btn_failures"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:alpha=".90"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/takala" />
+
+        <ImageButton
+            android:id="@+id/btn_contacts"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha=".90"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/dayarim" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_incomeAndResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
             android:layout_weight="1"
+            android:alpha=".90"
             android:background="@android:color/transparent"
-            android:padding="25dp"
-            app:layout_constraintStart_toEndOf="@+id/tlonot_bu"
-            app:layout_constraintTop_toTopOf="@+id/tlonot_bu"
-            app:srcCompat="@drawable/takala" />
+            app:srcCompat="@drawable/maazan" />
+
+        <ImageButton
+            android:id="@+id/btn_sharedRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha=".90"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/hadar_dayarim" />
+
+        <ImageButton
+            android:id="@+id/btn_forum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha=".90"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/forum" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="361dp"
-        android:layout_height="170dp"
-        android:layout_marginBottom="124dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent">
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/maazan_bu"
+            android:id="@+id/btn_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:alpha=".90"
-
-            android:layout_marginTop="5dp"
             android:layout_weight="1"
+            android:alpha=".90"
             android:background="@android:color/transparent"
-            android:padding="25dp"
-            app:layout_constraintStart_toEndOf="@+id/takalot_bu"
-            app:layout_constraintTop_toTopOf="@+id/Dayarim_Label"
-            app:srcCompat="@drawable/maazan" />
+            app:srcCompat="@drawable/tashlumim" />
 
         <ImageButton
-            android:id="@+id/heder_dayarim_bu"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:alpha=".90"
-
-            android:layout_marginTop="3dp"
             android:layout_weight="1"
+            android:alpha=".90"
             android:background="@android:color/transparent"
-            android:padding="25dp"
-            app:layout_constraintStart_toStartOf="@+id/tlonot_bu"
-            app:layout_constraintTop_toTopOf="@+id/forum_bu"
-            app:srcCompat="@drawable/hadar_dayarim" />
+            android:visibility="invisible"
+            app:srcCompat="@drawable/sherut" />
 
         <ImageButton
-            android:id="@+id/forum_bu"
+            android:id="@+id/btn_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:alpha=".90"
-
             android:layout_weight="1"
+            android:alpha=".90"
             android:background="@android:color/transparent"
-            android:padding="25dp"
-            app:layout_constraintBottom_toBottomOf="@+id/maazan_bu"
-            app:layout_constraintStart_toEndOf="@+id/tlonot_bu"
-            app:srcCompat="@drawable/forum" />
+            app:srcCompat="@drawable/sherut" />
+
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/back_bu"
-        android:layout_width="34dp"
-        android:layout_height="38dp"
 
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
