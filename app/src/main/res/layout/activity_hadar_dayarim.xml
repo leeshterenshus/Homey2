@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="com.lee.minted.Hadar_Dayarim"
+    tools:context="com.lee.minted.shared_room"
     tools:layout_editor_absoluteY="25dp">
 
 

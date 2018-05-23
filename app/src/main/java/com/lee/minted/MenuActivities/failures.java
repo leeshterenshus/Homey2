@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.lee.minted.MenuActivities.Menu_Activity;
 import com.lee.minted.R;
 
-public class takalot extends AppCompatActivity {
+public class failures extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +19,7 @@ public class takalot extends AppCompatActivity {
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(takalot.this,Menu_Activity.class
+                Intent intent = new Intent(failures.this,Menu_Activity.class
                 );
                 startActivity(intent);
             }

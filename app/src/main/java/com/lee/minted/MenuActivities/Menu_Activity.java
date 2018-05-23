@@ -41,9 +41,6 @@ public class Menu_Activity extends AppCompatActivity {
 
     }
 
-
-
-
     private void initButtons() {
         btn_contacts         =(ImageButton)findViewById(R.id.btn_contacts);
         btn_failures         =(ImageButton)findViewById(R.id.btn_failures);
@@ -59,7 +56,7 @@ public class Menu_Activity extends AppCompatActivity {
         btn_sharedRoom.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(Menu_Activity.this, "feature is not ready yet", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(Menu_Dayar_Activity.this,Hadar_Dayarim.class);
+//                Intent intent = new Intent(Menu_Dayar_Activity.this,shared_room.class);
 //                intent.putExtra("user",mUser);
 //                startActivity(intent);
             }
@@ -68,7 +65,7 @@ public class Menu_Activity extends AppCompatActivity {
 
         btn_contacts.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Activity.this,daf_kesher.class);
+                Intent intent = new Intent(Menu_Activity.this,contacts.class);
                 intent.putExtra("user",mUser);
                 startActivity(intent);
             }
@@ -76,7 +73,12 @@ public class Menu_Activity extends AppCompatActivity {
 
         btn_complaints.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Activity.this,Complaint_Activity.class);
+                Intent intent;
+                if (mUser.isManager){
+                    intent = new Intent(Menu_Activity.this,Complaint_Manager_Activity.class);
+                } else{
+                    intent = new Intent(Menu_Activity.this,Complaint_Activity.class);
+                }
                 intent.putExtra("user",mUser);
                 startActivity(intent);
             }
@@ -84,7 +86,7 @@ public class Menu_Activity extends AppCompatActivity {
 
         btn_failures.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Activity.this,takalot.class);
+                Intent intent = new Intent(Menu_Activity.this,failures.class);
                 intent.putExtra("user",mUser);
                 startActivity(intent);
             }

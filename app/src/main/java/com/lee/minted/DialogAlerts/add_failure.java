@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class add_takala extends AppCompatActivity {
+public class add_failure extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

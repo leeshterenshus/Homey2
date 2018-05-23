@@ -1,5 +1,6 @@
 package com.lee.minted.Clases;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ComplaintForm {
@@ -8,6 +9,7 @@ public class ComplaintForm {
     public String issue;
     public String message;
     public String status;
+//    public Long time;
 
     public ComplaintForm() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)

@@ -1,14 +1,10 @@
 package com.lee.minted;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.OrientationHelper;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 //import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog;
 //import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener;
@@ -32,13 +28,11 @@ import com.lee.minted.MenuActivities.Menu_Activity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Hadar_Dayarim extends AppCompatActivity {
+public class shared_room extends AppCompatActivity {
 
 
 //private CalendarView mCalendarView;
@@ -78,7 +72,7 @@ public SimpleDateFormat dataForamtMonth= new SimpleDateFormat("yyyy/MM/dd", Loca
 //        mCalendarView.setSelectionManager(new BaseSelectionManager() {
 //            @Override
 //            public void toggleDay(@NonNull Day day) {
-//                Toast.makeText(Hadar_Dayarim.this, day.toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(shared_room.this, day.toString(), Toast.LENGTH_SHORT).show();
 //            }
 //
 //            @Override
@@ -100,7 +94,7 @@ public SimpleDateFormat dataForamtMonth= new SimpleDateFormat("yyyy/MM/dd", Loca
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Hadar_Dayarim.this,Menu_Activity.class
+                Intent intent = new Intent(shared_room.this,Menu_Activity.class
                 );
                 startActivity(intent);
             }
@@ -109,7 +103,7 @@ public SimpleDateFormat dataForamtMonth= new SimpleDateFormat("yyyy/MM/dd", Loca
 
         add.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-//                Intent intent = new Intent(Hadar_Dayarim.this,add_activity_toCalendar_dayar.class
+//                Intent intent = new Intent(shared_room.this,add_activity_toCalendar_dayar.class
 //                );
 //                startActivity(intent);
             }

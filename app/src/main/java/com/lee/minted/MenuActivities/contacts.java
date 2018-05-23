@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Space;
@@ -23,10 +22,10 @@ import com.lee.minted.R;
 
 import java.util.HashMap;
 
-public class daf_kesher extends AppCompatActivity {
+public class contacts extends AppCompatActivity {
 
     private HashMap<String, User> usersMap = new HashMap<>();
-    final String TAG = "daf_kesher";
+    final String TAG = "contacts";
     private DatabaseReference mUsersRef;
     private FirebaseDatabase mDatabase;
     private User mUser;
@@ -47,7 +46,7 @@ public class daf_kesher extends AppCompatActivity {
 
 //        go_profile.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
-//                Intent intent = new Intent(daf_kesher.this, com.lee.minted.dayarProfile.class
+//                Intent intent = new Intent(contacts.this, com.lee.minted.dayarProfile.class
 //                );
 //                startActivity(intent);
 //            }
@@ -116,7 +115,7 @@ public class daf_kesher extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "postComments:onCancelled", databaseError.toException());
-                Toast.makeText(daf_kesher.this, "Failed to load users.",
+                Toast.makeText(contacts.this, "Failed to load users.",
                         Toast.LENGTH_SHORT).show();
             }
         };
@@ -129,7 +128,7 @@ public class daf_kesher extends AppCompatActivity {
         for (String username : usersMap.keySet()){
             if (username.equals(mUser.username)) continue;
 
-            TextView txt = new TextView(daf_kesher.this);
+            TextView txt = new TextView(contacts.this);
             User user = usersMap.get(username);
             String userDetails ="<b>"+ "דירה "+ user.appartment + "</b>" +", קומה " +user.floor+"\n"+"<br/>"+
                     "<b>"+"איש קשר: "+"</b>"+user.usernameHeb;
@@ -142,7 +141,7 @@ public class daf_kesher extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             txt.setTextSize(18);
             txt.setBackgroundColor(Color.WHITE);
-            Space space = new Space(daf_kesher.this);
+            Space space = new Space(contacts.this);
             space.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.FILL_PARENT,
                     15));

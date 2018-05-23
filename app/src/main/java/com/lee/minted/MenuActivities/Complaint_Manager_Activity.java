@@ -5,11 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -33,7 +34,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class Complaint_Activity extends AppCompatActivity {
+public class Complaint_Manager_Activity extends AppCompatActivity {
 
     HashMap<Integer,String> dayOfWeek = new HashMap<Integer,String>(){{
         put(1,"א"); put(2,"ב"); put(3,"ג");put(4,"ד");put(5,"ה");put(6,"ו");put(7,"ש");
@@ -69,43 +69,52 @@ public class Complaint_Activity extends AppCompatActivity {
 
     private void initDatabases() {
         mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference("Complaints/"+String.valueOf(mUser.appartment));
+        mRef = mDatabase.getReference("Complaints/");
 //        mRef.child("Complaints").child(String.valueOf(mUser.appartment));
 
         ChildEventListener usersChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
+                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                    ComplaintForm cf = ds.getValue(ComplaintForm.class);
+                    mComplaintFormHash.put(ds.getKey(), cf);
+                    renderView();
+                }
 
-                ComplaintForm cf = dataSnapshot.getValue(ComplaintForm.class);
-                mComplaintFormHash.put(dataSnapshot.getKey(), cf);
-                renderView();
+
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
                 Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
-
-                ComplaintForm cf = dataSnapshot.getValue(ComplaintForm.class);
-                mComplaintFormHash.put(dataSnapshot.getKey(), cf);
-                renderView();
+                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                    ComplaintForm cf = ds.getValue(ComplaintForm.class);
+                    mComplaintFormHash.put(ds.getKey(), cf);
+                    renderView();
+                }
                 // ...
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 Log.d(TAG, "onChildRemoved:" + dataSnapshot.getKey());
-                mComplaintFormHash.remove(dataSnapshot.getKey());
-                renderView();
+                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                    ComplaintForm cf = ds.getValue(ComplaintForm.class);
+                    mComplaintFormHash.put(ds.getKey(), cf);
+                    renderView();
+                }
                 }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
                 Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
 
-                ComplaintForm cf = dataSnapshot.getValue(ComplaintForm.class);
-                mComplaintFormHash.put(dataSnapshot.getKey(), cf);
-                renderView();
+                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                    ComplaintForm cf = ds.getValue(ComplaintForm.class);
+                    mComplaintFormHash.put(ds.getKey(), cf);
+                    renderView();
+                }
 
                 // ...
             }
@@ -113,7 +122,7 @@ public class Complaint_Activity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "postComments:onCancelled", databaseError.toException());
-                Toast.makeText(Complaint_Activity.this, "Failed to load complaints.",
+                Toast.makeText(Complaint_Manager_Activity.this, "Failed to load complaints.",
                         Toast.LENGTH_SHORT).show();
             }
         };
@@ -148,7 +157,7 @@ public class Complaint_Activity extends AppCompatActivity {
 
 
     private void addComplaint(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Complaint_Activity.this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Complaint_Manager_Activity.this);
 
         alertDialogBuilder.setTitle("תלונה חדשה");
         LayoutInflater inflater = this.getLayoutInflater();
@@ -208,33 +217,42 @@ public class Complaint_Activity extends AppCompatActivity {
         mComplaintIssue= issue;
     }
 
-    private void addComplaintToView(ComplaintForm copmplaintText){
+    private void addComplaintToView(final ComplaintForm complain){
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.compainsSV);
 
-        Space space = new Space(Complaint_Activity.this);
+        Space space = new Space(Complaint_Manager_Activity.this);
         space.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 15));
         linearLayout.addView(space);
 
         for (int i=0; i<3; i++){
-            TextView txt = new TextView(Complaint_Activity.this);
+            TextView txt = new TextView(Complaint_Manager_Activity.this);
             switch(i){
                 case 0:
                     txt.setTypeface(null, Typeface.BOLD);
-                    txt.setText(copmplaintText.message);
+                    txt.setText(complain.message);
+                    txt.setTextSize(15);
                     break;
                 case 1:
-                    txt.setText("סטטוס: טרם טופל");
+                    txt.setText("דירה: "+complain.appartment);
                     break;
                 case 2:
-                    txt.setText("תאריך: "+getDate());
+                    txt.setText("תאריך: "+complain.date);
                     break;
             }
             txt.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.FILL_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             txt.setBackgroundColor(Color.WHITE);
+//            txt.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    String toastMsg = "date: "+complain.date+", do you want to delete me?";
+//                    Toast.makeText(Complaint_Manager_Activity.this,toastMsg,Toast.LENGTH_SHORT).show();
+//                    return false;
+//                }
+//            });
             linearLayout.addView(txt);
 
 
@@ -279,7 +297,7 @@ public class Complaint_Activity extends AppCompatActivity {
     }
 
     private void writeNewComplaint(ComplaintForm cf) {
-        mRef.child(getTime()).setValue(cf);
+        mRef.child(String.valueOf(cf.appartment)).child(getTime()).setValue(cf);
     }
 
 

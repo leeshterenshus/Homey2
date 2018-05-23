@@ -59,6 +59,14 @@ public class Login_Activity extends AppCompatActivity {
                     return;
                 }
 
+                if (username.equals("l")){
+                    Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
+                    intent.putExtra("user",usersMap.get("Lee Shterenshus"));
+                    startActivity(intent);
+                    return;
+                }
+
+
                 if (username.equals("n")){
                     Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
                     intent.putExtra("user",usersMap.get("Noa Kalo"));
@@ -75,20 +83,10 @@ public class Login_Activity extends AppCompatActivity {
                 {
                     if (ua.getUsername().equals(username) &&  ua.getPassword().equals(password))
                     {
-                        if (usersMap.get(username).isManager)
-                        {
-                            Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
-                            intent.putExtra("user",usersMap.get(username));
-                            startActivity(intent);
-                            return;
-                        }
-                        else
-                        {
-                            Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
-                            intent.putExtra("user",usersMap.get(username));
-                            startActivity(intent);
-                            return;
-                        }
+                        Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
+                        intent.putExtra("user",usersMap.get(username));
+                        startActivity(intent);
+                        return;
                     }
                 }
                 Toast.makeText(Login_Activity.this,"שם משתמש ו\\או סיסמא אינם נכונים", Toast.LENGTH_LONG).show();
