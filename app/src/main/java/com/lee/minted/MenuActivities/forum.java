@@ -6,21 +6,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class dayarProfile extends AppCompatActivity {
+import com.lee.minted.MenuActivities.Menu_Activity;
+
+public class forum extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dayar_profile);
-
+        setContentView(R.layout.activity_forum);
         final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(dayarProfile.this,daf_kesher.class
+                Intent intent = new Intent(forum.this,Menu_Activity.class
                 );
                 startActivity(intent);
             }
         });
     }
-}//comment
+
+    //comment
+
+}

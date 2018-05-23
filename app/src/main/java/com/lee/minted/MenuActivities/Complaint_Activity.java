@@ -1,4 +1,4 @@
-package com.lee.minted;
+package com.lee.minted.MenuActivities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lee.minted.Clases.ComplaintForm;
 import com.lee.minted.Clases.User;
+import com.lee.minted.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -129,13 +130,13 @@ public class Complaint_Activity extends AppCompatActivity {
     private void setOnClickListeners(){
         final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(Complaint_Activity.this,Menu_Dayar_Activity.class
-                );
-                startActivity(intent);
-            }
-        });
+//        back.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Complaint_Activity.this,Menu_Dayar_Activity.class
+//                );
+//                startActivity(intent);
+//            }
+//        });
 
 
         FloatingActionButton FAB_AddComplaint = (FloatingActionButton)findViewById(R.id.FAB_AddComplaint);

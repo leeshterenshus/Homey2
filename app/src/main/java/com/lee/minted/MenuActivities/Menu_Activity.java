@@ -1,15 +1,20 @@
-package com.lee.minted;
+package com.lee.minted.MenuActivities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.lee.minted.Clases.User;
+import com.lee.minted.R;
+import com.lee.minted.forum;
+import com.lee.minted.maazan;
 
-public class Menu_Dayar_Activity extends AppCompatActivity {
+
+public class Menu_Activity extends AppCompatActivity {
 
     private User mUser;
 
@@ -25,19 +30,17 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu__dayar_);
+        setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
         mUser = (User)intent.getSerializableExtra("user");
-        
+
         initButtons();
         setOnClickListeners();
-
-
-
-
+        displayManagerIcons();
 
     }
+
 
 
 
@@ -55,7 +58,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
     private void setOnClickListeners() {
         btn_sharedRoom.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(Menu_Dayar_Activity.this, "feature is not ready yet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Menu_Activity.this, "feature is not ready yet", Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent(Menu_Dayar_Activity.this,Hadar_Dayarim.class);
 //                intent.putExtra("user",mUser);
 //                startActivity(intent);
@@ -65,7 +68,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
 
         btn_contacts.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Dayar_Activity.this,daf_kesher.class);
+                Intent intent = new Intent(Menu_Activity.this,daf_kesher.class);
                 intent.putExtra("user",mUser);
                 startActivity(intent);
             }
@@ -73,7 +76,7 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
 
         btn_complaints.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Dayar_Activity.this,Complaint_Activity.class);
+                Intent intent = new Intent(Menu_Activity.this,Complaint_Activity.class);
                 intent.putExtra("user",mUser);
                 startActivity(intent);
             }
@@ -81,14 +84,14 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
 
         btn_failures.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Dayar_Activity.this,takalot.class);
+                Intent intent = new Intent(Menu_Activity.this,takalot.class);
                 intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
         btn_forum.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Dayar_Activity.this,forum.class);
+                Intent intent = new Intent(Menu_Activity.this,forum.class);
                 intent.putExtra("user",mUser);
                 startActivity(intent);
             }
@@ -96,11 +99,20 @@ public class Menu_Dayar_Activity extends AppCompatActivity {
 
         btn_incomeAndResults.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Menu_Dayar_Activity.this,maazan.class);
+                Intent intent = new Intent(Menu_Activity.this,maazan.class);
                 intent.putExtra("user",mUser);
                 startActivity(intent);
             }
         });
+    }
+
+    private void displayManagerIcons() {
+        LinearLayout managerIcons = (LinearLayout)findViewById(R.id.linearLayout3);
+        if (mUser.isManager == true){
+            managerIcons.setVisibility(View.VISIBLE);
+        } else{
+            managerIcons.setVisibility(View.INVISIBLE);
+        }
     }
 
 

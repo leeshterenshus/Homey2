@@ -28,8 +28,7 @@ import android.widget.Toast;
 //import com.applikeysolutions.cosmocalendar.utils.SelectionType;
 
 
-
-
+import com.lee.minted.MenuActivities.Menu_Activity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -101,7 +100,7 @@ public SimpleDateFormat dataForamtMonth= new SimpleDateFormat("yyyy/MM/dd", Loca
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Hadar_Dayarim.this,Menu_Dayar_Activity.class
+                Intent intent = new Intent(Hadar_Dayarim.this,Menu_Activity.class
                 );
                 startActivity(intent);
             }

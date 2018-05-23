@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lee.minted.Clases.User;
 import com.lee.minted.Clases.UserAuth;
+import com.lee.minted.MenuActivities.Menu_Activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,14 +53,14 @@ public class Login_Activity extends AppCompatActivity {
                 String password = passwordET.getText().toString();
 
                 if (username.equals("y")){
-                    Intent intent = new Intent(Login_Activity.this, Menu_Dayar_Activity.class);
+                    Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
                     intent.putExtra("user",usersMap.get("Yuval Goddard"));
                     startActivity(intent);
                     return;
                 }
 
                 if (username.equals("n")){
-                    Intent intent = new Intent(Login_Activity.this, Menu_Vaad_Activity.class);
+                    Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
                     intent.putExtra("user",usersMap.get("Noa Kalo"));
                     startActivity(intent);
                     return;
@@ -76,14 +77,14 @@ public class Login_Activity extends AppCompatActivity {
                     {
                         if (usersMap.get(username).isManager)
                         {
-                            Intent intent = new Intent(Login_Activity.this, Menu_Dayar_Activity.class);
+                            Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
                             intent.putExtra("user",usersMap.get(username));
                             startActivity(intent);
                             return;
                         }
                         else
                         {
-                            Intent intent = new Intent(Login_Activity.this, Menu_Vaad_Activity.class);
+                            Intent intent = new Intent(Login_Activity.this, Menu_Activity.class);
                             intent.putExtra("user",usersMap.get(username));
                             startActivity(intent);
                             return;

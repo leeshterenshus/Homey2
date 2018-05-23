@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.lee.minted.MenuActivities.Menu_Activity;
+
 public class maazan extends AppCompatActivity {
 
     @Override
@@ -17,7 +19,7 @@ public class maazan extends AppCompatActivity {
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(maazan.this,Menu_Dayar_Activity.class
+                Intent intent = new Intent(maazan.this,Menu_Activity.class
                 );
                 startActivity(intent);
             }

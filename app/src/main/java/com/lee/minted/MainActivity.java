@@ -110,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void writeNewUser(String userId, String name, String phone, int appatment, int floor, boolean isManager) {
-        User user = new User(name, phone, appatment, floor, isManager);
+    private void writeNewUser(String userId,String hebName, String name, String phone, int appatment, int floor, int parking, int storage, boolean isManager) {
+        User user = new User(name,hebName, phone, appatment, floor,parking, storage, isManager);
         mRef.child("users").child(userId).setValue(user);
     }
 

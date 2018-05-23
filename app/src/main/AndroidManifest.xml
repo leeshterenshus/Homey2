@@ -32,7 +32,7 @@
         <activity android:name=".Login_Activity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Menu_Dayar_Activity"
+        <activity android:name=".MenuActivities.Menu_Activity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity android:name=".Menu_Vaad_Activity"
@@ -41,10 +41,10 @@
         <activity android:name=".Hadar_Dayarim"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".takalot"
+        <activity android:name=".MenuActivities.takalot"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Complaint_Activity"
+        <activity android:name=".MenuActivities.Complaint_Activity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity android:name=".forum"
@@ -53,10 +53,10 @@
         <activity android:name=".maazan"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".daf_kesher"
+        <activity android:name=".MenuActivities.daf_kesher"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".dayarProfile"
+        <activity android:name=".DialogAlerts.dayarProfile"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity android:name=".add_activity_toCalendar_dayar"
