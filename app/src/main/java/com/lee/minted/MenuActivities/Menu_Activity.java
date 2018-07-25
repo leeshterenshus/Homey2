@@ -55,10 +55,10 @@ public class Menu_Activity extends AppCompatActivity {
     private void setOnClickListeners() {
         btn_sharedRoom.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(Menu_Activity.this, "feature is not ready yet", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(Menu_Dayar_Activity.this,shared_room.class);
-//                intent.putExtra("user",mUser);
-//                startActivity(intent);
+//                Toast.makeText(Menu_Activity.this, "feature is not ready yet", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Menu_Activity.this,shared_room.class);
+                intent.putExtra("user",mUser);
+                startActivity(intent);
             }
         });
 

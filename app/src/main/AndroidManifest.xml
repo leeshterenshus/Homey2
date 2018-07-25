@@ -38,7 +38,7 @@
         <activity android:name=".Menu_Vaad_Activity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".shared_room"
+        <activity android:name=".MenuActivities.shared_room"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity android:name=".MenuActivities.failures"
@@ -50,10 +50,10 @@
         <activity android:name=".MenuActivities.Complaint_Manager_Activity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".forum"
+        <activity android:name=".MenuActivities.forum"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".maazan"
+        <activity android:name=".MenuActivities.maazan"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity android:name=".MenuActivities.contacts"
