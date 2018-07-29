@@ -1,4 +1,4 @@
-package com.lee.minted;
+package com.lee.minted.MenuActivities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.lee.minted.MenuActivities.Menu_Activity;
+import com.lee.minted.R;
 
 public class maazan extends AppCompatActivity {
 

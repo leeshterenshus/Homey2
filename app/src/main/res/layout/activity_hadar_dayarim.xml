@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="com.lee.minted.shared_room"
+    tools:context="com.lee.minted.MenuActivities.shared_room"
     tools:layout_editor_absoluteY="25dp">
 
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/hadar_dayarim"
         android:textSize="40dip"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="57dp" />
+        android:gravity="center_horizontal"
+ />
 
     <!--<CalendarView-->
         <!--android:id="@+id/calendarView"-->
@@ -33,15 +33,27 @@
         <!--app:layout_constraintStart_toStartOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="parent"></CalendarView>-->
 
-    <com.applikeysolutions.cosmocalendar.view.CalendarView
-    android:id="@+id/calendar_view"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toTopOf="@+id/add_bu"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    />
+    <!--<com.applikeysolutions.cosmocalendar.view.CalendarView-->
+    <!--android:id="@+id/calendar_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/add_bu"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--/>-->
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/add_bu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="#3399FF"
+        />
 
     <ImageButton
         android:id="@+id/back_bu"
