@@ -3,20 +3,21 @@ package com.lee.minted.Clases;
 import java.util.Date;
 
 
-public class IncomEAndExpences {
-    public Date date;
+
+public class IncomEAndExpencesForm {
+    public String date;
     public Float amount;
     public String message;
-    public Float balance;
+    public int incomeOrExpense;
 
-    public IncomEAndExpences() {
+    public IncomEAndExpencesForm() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public IncomEAndExpences(Date date,Float amount, String message,Float balance ) {
+    public IncomEAndExpencesForm(String date,Float amount, String message, int incomeOrExpense ) {
         this.date = date;
         this.amount = amount;
-        this.balance = balance;
         this.message = message;
+        this.incomeOrExpense = incomeOrExpense;
     }
 }

@@ -47,13 +47,13 @@ public class forum extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.FAB_AddForumMsg);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                showDialog();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddMaazanMsg);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                showDialog();
+//            }
+//        });
     }
 
 //    private void setForumDatabase() {

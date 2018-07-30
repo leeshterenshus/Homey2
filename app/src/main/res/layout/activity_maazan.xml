@@ -26,24 +26,35 @@
         android:textSize="40dip" />
 
     <LinearLayout
-        android:id="@+id/llForum"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/FAB_AddForumMsg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="25dp"
-        android:layout_marginRight="25dp"
-        android:clickable="true"
-        android:foregroundGravity="fill"
-        android:scaleType="center"
-        android:src="@android:drawable/ic_menu_add"
-        app:backgroundTint="@android:color/background_light"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAddMaazanMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-        app:elevation="12dp"
-        app:fabSize="mini" />
+            android:clickable="true"
+            android:foregroundGravity="fill"
+            android:scaleType="center"
+            android:src="@android:drawable/ic_menu_add"
+            app:backgroundTint="@android:color/background_light"
+            app:elevation="12dp"
+            app:fabSize="mini" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="25dp">
+
+            <LinearLayout
+                android:id="@+id/llIncomeAndExpensesList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
 </LinearLayout>
