@@ -105,6 +105,20 @@ public class Menu_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btn_service.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Activity.this,service.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_payment.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu_Activity.this,payment.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void displayManagerIcons() {

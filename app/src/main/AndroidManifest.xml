@@ -56,6 +56,12 @@
         <activity android:name=".MenuActivities.maazan"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
+        <activity android:name=".MenuActivities.service"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MenuActivities.payment"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MenuActivities.contacts"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
