@@ -14,6 +14,7 @@
         android:layout_height="38dp"
         android:layout_gravity="top|left"
         android:background="@android:color/transparent"
+        android:visibility="invisible"
         app:srcCompat="@drawable/back" />
 
     <TextView
@@ -27,7 +28,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
@@ -46,7 +47,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="08/2018"
+            android:text="08\\2018"
             android:textSize="30dp" />
 
         <Button
@@ -60,6 +61,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -73,7 +75,9 @@
                 android:id="@+id/paymentList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+            </LinearLayout>
         </ScrollView>
 
     </LinearLayout>

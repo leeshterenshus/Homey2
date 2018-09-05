@@ -1,13 +1,20 @@
 package com.lee.minted.MenuActivities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.lee.minted.Clases.IncomEAndExpencesForm;
 import com.lee.minted.Clases.User;
 import com.lee.minted.R;
 
@@ -25,6 +32,7 @@ public class Menu_Activity extends AppCompatActivity {
     private ImageButton btn_incomeAndResults;
     private ImageButton btn_service;
     private ImageButton btn_payment;
+    private ImageButton btn_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +57,7 @@ public class Menu_Activity extends AppCompatActivity {
         btn_incomeAndResults =(ImageButton)findViewById(R.id.btn_incomeAndResults);
         btn_service          =(ImageButton)findViewById(R.id.btn_service);
         btn_payment          =(ImageButton)findViewById(R.id.btn_payment);
+        btn_info             =(ImageButton)findViewById(R.id.btn_info);
     }
 
     private void setOnClickListeners() {
@@ -119,6 +128,13 @@ public class Menu_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btn_info.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showInfoAlertDialog();
+            }
+        });
+
     }
 
     private void displayManagerIcons() {
@@ -128,6 +144,20 @@ public class Menu_Activity extends AppCompatActivity {
         } else{
             managerIcons.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void showInfoAlertDialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Menu_Activity.this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView= inflater.inflate(R.layout.info_dialog, null);
+
+        alertDialogBuilder
+                .setView(dialogView)
+                .setCancelable(true);
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 
