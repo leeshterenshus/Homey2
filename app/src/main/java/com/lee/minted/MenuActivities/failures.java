@@ -15,14 +15,6 @@ public class failures extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_takalot);
 
-        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(failures.this,Menu_Activity.class
-                );
-                startActivity(intent);
-            }
-        });
     }
 }

@@ -228,15 +228,7 @@ public class shared_room extends AppCompatActivity {
 
     private void initButtons() {
 //        calendar = Calendar.getInstance();
-        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(shared_room.this,Menu_Activity.class
-                );
-                startActivity(intent);
-            }
-        });
         final ImageButton add= (ImageButton)findViewById(R.id.add_bu);
 
         add.setOnClickListener(new View.OnClickListener() {

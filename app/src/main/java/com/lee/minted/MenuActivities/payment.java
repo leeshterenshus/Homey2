@@ -153,14 +153,6 @@ public class payment extends AppCompatActivity {
     }
 
     private void initButtons() {
-        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(payment.this,Menu_Activity.class
-                );
-                startActivity(intent);
-            }
-        });
 
     }
 

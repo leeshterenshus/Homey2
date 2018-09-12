@@ -8,18 +8,19 @@ public class User implements Serializable{
     public String username;
     public String usernameHeb;
     public String phone;
-    public int appartment;
-    public int floor;
-    public int parking;
-    public int storage;
+    public String appartment;
+    public String floor;
+    public String parking;
+    public String storage;
     public boolean isManager;
+    public boolean showPhone;
 
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String username, String hebName, String phone, int appartment, int floor, int parking, int storage, boolean isManager) {
+    public User(String username, String hebName, String phone, String appartment, String floor, String parking, String storage, boolean isManager, boolean showPhone) {
         this.usernameHeb = hebName;
         this.username = username;
         this.phone = phone;
@@ -28,6 +29,7 @@ public class User implements Serializable{
         this.isManager = isManager;
         this.parking = parking;
         this.storage = storage;
+        this.showPhone = showPhone;
     }
 
 }

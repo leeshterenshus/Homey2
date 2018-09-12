@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class ComplaintForm {
     public String date;
-    public int appartment;
+    public String appartment;
     public String issue;
     public String message;
     public String status;
@@ -15,7 +15,7 @@ public class ComplaintForm {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public ComplaintForm(String date, int appartment, String issue, String message,String status) {
+    public ComplaintForm(String date, String appartment, String issue, String message,String status) {
         this.date = date;
         this.appartment = appartment;
         this.issue = issue;

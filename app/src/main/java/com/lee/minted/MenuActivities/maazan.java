@@ -73,14 +73,7 @@ public class maazan extends AppCompatActivity {
     }
 
     private void initButtons() {
-        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(maazan.this,Menu_Activity.class
-                );
-                startActivity(intent);
-            }
-        });
+
 
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fabAddMaazanMsg);
         if (!mUser.isManager)

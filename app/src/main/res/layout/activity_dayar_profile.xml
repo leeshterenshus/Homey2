@@ -1,221 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context="com.lee.minted.dayarProfile"
     tools:layout_editor_absoluteY="25dp">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:layout_marginTop="74dp"
-        android:gravity="center"
-        android:text="ערוך פרופיל"
-        android:textSize="40dip"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
-        android:layout_height="363dp"
-        android:layout_marginBottom="132dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginStart="44dp"
-        android:background="@drawable/half"
-        android:fadingEdge="horizontal|vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/phone"
+            android:layout_alignBottom="@+id/phone"
+            android:layout_alignLeft="@+id/editContact"
+            android:layout_alignStart="@+id/editContact"
+            android:background="@android:drawable/editbox_background_normal"
+            android:inputType="phone"
+            android:textSize="18sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="239dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/editParking"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editGarage"
+            android:layout_alignStart="@+id/editGarage"
+            android:layout_below="@+id/editGarage"
+            android:layout_marginTop="20dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:inputType="number"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="77dp"
+            tools:layout_editor_absoluteY="378dp" />
 
-            <EditText
-                android:id="@+id/editPhone"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/phone"
-                android:layout_alignBottom="@+id/phone"
-                android:layout_alignLeft="@+id/editContact"
-                android:layout_alignStart="@+id/editContact"
-                android:background="@android:drawable/editbox_background_normal"
-                android:inputType="phone"
-                android:textSize="18sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="72dp"
-                tools:layout_editor_absoluteY="239dp" />
+        <EditText
+            android:id="@+id/editContact"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btn_ok"
+            android:layout_alignRight="@+id/btn_ok"
+            android:layout_alignTop="@+id/contact"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="18sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="75dp"
+            tools:layout_editor_absoluteY="172dp" />
 
-            <EditText
-                android:id="@+id/editParking"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editGarage"
-                android:layout_alignStart="@+id/editGarage"
-                android:layout_below="@+id/editGarage"
-                android:layout_marginTop="20dp"
-                android:background="@android:drawable/editbox_background_normal"
-                android:inputType="number"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="77dp"
-                tools:layout_editor_absoluteY="378dp" />
+        <TextView
+            android:id="@+id/showPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-            <EditText
-                android:id="@+id/editContact"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/ok_button3"
-                android:layout_alignRight="@+id/ok_button3"
-                android:layout_alignTop="@+id/contact"
-                android:layout_marginEnd="11dp"
-                android:layout_marginRight="11dp"
-                android:background="@android:drawable/editbox_background_normal"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textSize="18sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="75dp"
-                tools:layout_editor_absoluteY="172dp" />
+            android:layout_below="@+id/editPhone"
+            android:layout_marginEnd="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/showPhoneCheck2"
+            android:layout_toStartOf="@+id/showPhoneCheck2"
+            android:text="הצג מספר טלפון בדף דיירים"
+            android:textColor="#323232"
+            android:textSize="14dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="316dp" />
 
-            <TextView
-                android:id="@+id/showPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+        <EditText
+            android:id="@+id/editGarage"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/parking"
+            android:layout_alignBottom="@+id/parking"
+            android:layout_alignLeft="@+id/editPhone"
+            android:layout_alignStart="@+id/editPhone"
+            android:background="@android:drawable/editbox_background_normal"
+            android:inputType="number"
+            android:textSize="18sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="451dp" />
 
-                android:layout_below="@+id/editPhone"
-                android:layout_marginEnd="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_marginTop="10dp"
-                android:layout_toLeftOf="@+id/showPhoneCheck2"
-                android:layout_toStartOf="@+id/showPhoneCheck2"
-                android:text="הצג מספר טלפון בדף דיירים"
-                android:textColor="#323232"
-                android:textSize="14dp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="80dp"
-                tools:layout_editor_absoluteY="316dp" />
+        <TextView
+            android:id="@+id/parking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/contact"
+            android:layout_alignRight="@+id/contact"
+            android:layout_below="@+id/showPhoneCheck2"
+            android:layout_marginTop="17dp"
+            android:text="חניה"
+            android:textColor="#323232"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="290dp"
+            tools:layout_editor_absoluteY="383dp" />
 
-            <EditText
-                android:id="@+id/editGarage"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/parking"
-                android:layout_alignBottom="@+id/parking"
-                android:layout_alignLeft="@+id/editPhone"
-                android:layout_alignStart="@+id/editPhone"
-                android:background="@android:drawable/editbox_background_normal"
-                android:inputType="number"
-                android:textSize="18sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="73dp"
-                tools:layout_editor_absoluteY="451dp" />
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/contact"
+            android:layout_alignRight="@+id/contact"
+            android:layout_below="@+id/contact"
+            android:layout_marginTop="28dp"
+            android:text="טלפון"
+            android:textColor="#323232"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="245dp" />
 
-            <TextView
-                android:id="@+id/parking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/contact"
-                android:layout_alignRight="@+id/contact"
-                android:layout_below="@+id/showPhoneCheck2"
-                android:layout_marginTop="17dp"
-                android:text="חניה"
-                android:textColor="#323232"
-                android:textSize="16sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="290dp"
-                tools:layout_editor_absoluteY="383dp" />
+        <TextView
+            android:id="@+id/garage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/phone"
+            android:layout_alignStart="@+id/phone"
+            android:layout_alignTop="@+id/editParking"
+            android:text="מחסן"
+            android:textColor="#323232"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="457dp" />
 
-            <TextView
-                android:id="@+id/phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/contact"
-                android:layout_alignRight="@+id/contact"
-                android:layout_below="@+id/contact"
-                android:layout_marginTop="28dp"
-                android:text="טלפון"
-                android:textColor="#323232"
-                android:textSize="16sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="288dp"
-                tools:layout_editor_absoluteY="245dp" />
+        <TextView
+            android:id="@+id/contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="38dp"
+            android:layout_toEndOf="@+id/btn_ok"
+            android:layout_toRightOf="@+id/btn_ok"
+            android:text="איש קשר"
+            android:textColor="#323232"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="267dp"
+            tools:layout_editor_absoluteY="177dp" />
 
-            <TextView
-                android:id="@+id/garage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/phone"
-                android:layout_alignStart="@+id/phone"
-                android:layout_alignTop="@+id/editParking"
-                android:text="מחסן"
-                android:textColor="#323232"
-                android:textSize="16sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="288dp"
-                tools:layout_editor_absoluteY="457dp" />
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editParking"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
+            android:text="אישור"
+            tools:layout_editor_absoluteX="162dp"
+            tools:layout_editor_absoluteY="513dp" />
 
-            <TextView
-                android:id="@+id/contact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="17dp"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="38dp"
-                android:layout_toEndOf="@+id/ok_button3"
-                android:layout_toRightOf="@+id/ok_button3"
-                android:text="איש קשר"
-                android:textColor="#323232"
-                android:textSize="16sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="267dp"
-                tools:layout_editor_absoluteY="177dp" />
+        <CheckBox
+            android:id="@+id/showPhoneCheck2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/showPhone"
+            android:layout_alignBottom="@+id/showPhone"
+            android:layout_alignLeft="@+id/phone"
+            android:layout_alignStart="@+id/phone"
+            tools:ignore="DuplicateIds,MissingConstraints"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="313dp" />
 
-            <Button
-                android:id="@+id/ok_button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editParking"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="28dp"
-                android:text="אישור"
-                tools:layout_editor_absoluteX="162dp"
-                tools:layout_editor_absoluteY="513dp" />
+    </RelativeLayout>
 
-            <CheckBox
-                android:id="@+id/showPhoneCheck2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/showPhone"
-                android:layout_alignBottom="@+id/showPhone"
-                android:layout_alignLeft="@+id/phone"
-                android:layout_alignStart="@+id/phone"
-                tools:ignore="DuplicateIds,MissingConstraints"
-                tools:layout_editor_absoluteX="307dp"
-                tools:layout_editor_absoluteY="313dp" />
 
-        </RelativeLayout>
 
-    </FrameLayout>
-
-    <ImageButton
-        android:id="@+id/back_bu"
-        android:layout_width="59dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="69dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

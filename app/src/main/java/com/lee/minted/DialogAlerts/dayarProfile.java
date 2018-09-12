@@ -16,14 +16,6 @@ public class dayarProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dayar_profile);
 
-        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(dayarProfile.this,contacts.class
-                );
-                startActivity(intent);
-            }
-        });
     }
 }//comment

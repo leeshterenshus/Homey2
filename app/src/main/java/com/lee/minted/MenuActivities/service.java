@@ -62,14 +62,7 @@ public class service extends AppCompatActivity {
     }
 
     private void initButtons() {
-        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(service.this,Menu_Activity.class
-                );
-                startActivity(intent);
-            }
-        });
+
 
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fabAddServiceMsg);
         fab.setOnClickListener(new View.OnClickListener() {

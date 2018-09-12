@@ -126,15 +126,7 @@ public class Complaint_Activity extends AppCompatActivity {
 
 
     private void setOnClickListeners(){
-        final ImageButton back= (ImageButton)findViewById(R.id.back_bu);
 
-//        back.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Complaint_Activity.this,Menu_Dayar_Activity.class
-//                );
-//                startActivity(intent);
-//            }
-//        });
 
 
         FloatingActionButton FAB_AddComplaint = (FloatingActionButton)findViewById(R.id.FAB_AddComplaint);

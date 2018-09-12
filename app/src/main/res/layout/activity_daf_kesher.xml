@@ -24,7 +24,7 @@
             android:text="@string/dayarim"
             android:textColor="@android:color/background_dark"
             android:textSize="40dip"
-            app:layout_constraintBottom_toTopOf="@+id/go_to_profile_bu"
+            app:layout_constraintBottom_toTopOf="@+id/btn_profile"
             app:layout_constraintStart_toEndOf="@+id/back_bu"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.564" />
@@ -38,32 +38,34 @@
 
 
             <SearchView
-                android:id="@+id/searchView2"
-                android:layout_width="100dp"
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/dayarim_title"
                 android:layout_marginLeft="26dp"
-                android:layout_marginStart="26dp"
-                android:layout_marginTop="21dp"
-                android:layout_weight="1"
+                android:layout_marginRight="10dp"
 
+                android:layout_weight="1"
                 android:background="@drawable/bg_calander"
                 tools:layout_editor_absoluteX="0dp" />
 
 
             <Button
-                android:id="@+id/go_to_profile_bu"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_alignBottom="@+id/searchView2"
+                android:id="@+id/btn_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/searchView"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="33dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="33dp"
                 android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
                 android:text="הפרופיל שלי"
+                android:textColor="@android:color/background_light"
                 android:textSize="18sp" />
         </LinearLayout>
 

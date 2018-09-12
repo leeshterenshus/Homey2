@@ -1,13 +1,20 @@
 package com.lee.minted.MenuActivities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.lee.minted.Clases.ForumForm;
 import com.lee.minted.Clases.User;
 import com.lee.minted.R;
 
@@ -29,6 +37,7 @@ public class contacts extends AppCompatActivity {
     private DatabaseReference mUsersRef;
     private FirebaseDatabase mDatabase;
     private User mUser;
+    private String mSearchString = "";
 
 
     @Override
@@ -41,18 +50,38 @@ public class contacts extends AppCompatActivity {
         mUser = (User)intent.getSerializableExtra("user");
 
         initDatabases();
+        initButtons();
 
-        final Button go_profile= (Button)findViewById(R.id.go_to_profile_bu);
 
-//        go_profile.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent intent = new Intent(contacts.this, com.lee.minted.dayarProfile.class
-//                );
-//                startActivity(intent);
-//            }
-//        });
 
         renderUsersPhoneTable();
+    }
+
+    private void initButtons() {
+        final Button btn_profile = (Button)findViewById(R.id.btn_profile);
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editProfile();
+            }
+        });
+
+        final SearchView searchView = (SearchView)findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mSearchString = query;
+                renderUsersPhoneTable();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mSearchString = newText;
+                renderUsersPhoneTable();
+                return false;
+            }
+        });
     }
 
     private void initDatabases() {
@@ -145,8 +174,68 @@ public class contacts extends AppCompatActivity {
             space.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.FILL_PARENT,
                     15));
-            linearLayout.addView(space);
-            linearLayout.addView(txt);
+            if (userDetails.contains(mSearchString)){
+                linearLayout.addView(space);
+                linearLayout.addView(txt);
+            }
+
         }
     }
+
+    private void editProfile(){
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(contacts.this);
+
+        alertDialogBuilder.setTitle("עריכת פרופיל");
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView= inflater.inflate(R.layout.activity_dayar_profile, null);
+
+        final EditText contactName = (EditText)dialogView.findViewById(R.id.editContact);
+        final EditText contactPhone = (EditText)dialogView.findViewById(R.id.editPhone);
+        final EditText contactParking = (EditText)dialogView.findViewById(R.id.editParking);
+        final EditText contactGarage = (EditText)dialogView.findViewById(R.id.editGarage);
+        final CheckBox showPhone = (CheckBox)dialogView.findViewById(R.id.showPhoneCheck2);
+        final Button btnOK = (Button)dialogView.findViewById(R.id.btn_ok);
+
+        if (!mUser.isManager){
+            contactName.setKeyListener(null);
+            contactParking.setKeyListener(null);
+            contactGarage.setKeyListener(null);
+        }
+
+        contactName.setText(mUser.usernameHeb);
+        contactPhone.setText(mUser.phone);
+        contactParking.setText(mUser.parking);
+        contactGarage.setText(mUser.storage);
+
+        alertDialogBuilder
+                .setView(dialogView)
+                .setCancelable(false);
+
+
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                User user = new User(mUser.username,
+                        contactName.getText().toString(),
+                        contactPhone.getText().toString(),
+                        mUser.appartment,
+                        mUser.floor,
+                        contactParking.getText().toString(),
+                        contactGarage.getText().toString(),
+                        mUser.isManager,
+                        showPhone.isChecked() );
+                mUsersRef.child(mUser.appartment).setValue(user);
+                alertDialog.dismiss();
+            }
+        });
+
+
+    }
+
+
+
+
 }
