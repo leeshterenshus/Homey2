@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -27,6 +29,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lee.minted.Clases.ComplaintForm;
+import com.lee.minted.Clases.FailureForm;
 import com.lee.minted.Clases.User;
 import com.lee.minted.R;
 
@@ -146,6 +149,58 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
         });
     }
 
+    private void popupFailureDialog(FailureForm f) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Complaint_Manager_Activity.this);
+
+        alertDialogBuilder.setTitle("העבר תלונה לתקלות");
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView= inflater.inflate(R.layout.activity_add_takala, null);
+
+        final EditText message = (EditText)dialogView.findViewById(R.id.ETmsg);
+        final String[] failureStatus = new String[1];
+
+        message.setText(f.issue);
+
+        Spinner spinner = (Spinner) dialogView.findViewById(R.id.SPsubject);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                failureStatus[0] = adapterView.getItemAtPosition(pos).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                failureStatus[0] = adapterView.getItemAtPosition(0).toString();
+            }
+        });
+
+        alertDialogBuilder
+                .setView(dialogView)
+                .setCancelable(false)
+                .setPositiveButton("אשר",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        String failureMessage = message.getText().toString();
+                        FailureForm cf = new FailureForm(getDate(), failureMessage, failureStatus[0]);
+                        DatabaseReference failureRef = mDatabase.getReference("Failures/");
+                        failureRef.child(getTime()).setValue(cf);
+
+                        // if this button is clicked, close
+                        // current activity
+
+                    }
+                })
+                .setNegativeButton("בטל",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
 
     private void addComplaint(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Complaint_Manager_Activity.this);
@@ -214,7 +269,7 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
         Space space = new Space(Complaint_Manager_Activity.this);
         space.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
-                15));
+                25));
         linearLayout.addView(space);
 
         for (int i=0; i<3; i++){
@@ -245,9 +300,28 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
 //                }
 //            });
             linearLayout.addView(txt);
-
-
         }
+        LinearLayout buttonsLL = new LinearLayout(Complaint_Manager_Activity.this);
+        Button btn = new Button(Complaint_Manager_Activity.this);
+        btn.setBackgroundColor(Color.RED);
+        btn.setText("העבר לתקלות");
+        btn.setTextColor(Color.WHITE);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FailureForm f = new FailureForm(complain.date, complain.message, null);
+                popupFailureDialog(f);
+            }
+        });
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                100
+        );
+        btn.setLayoutParams(params);
+        btn.setPadding(3,3,0,3);
+
+        linearLayout.addView(btn);
     }
 
     private void renderView(){

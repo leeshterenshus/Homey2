@@ -49,4 +49,11 @@
     </string-array>
 
 
+    <string-array name="failures_title_array">
+        <item>טרם טופל</item>
+        <item>בטיפול</item>
+        <item>טופל</item>
+    </string-array>
+
+
 </resources>

@@ -44,16 +44,10 @@ public class contacts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daf_kesher);
-
-
         Intent intent = getIntent();
         mUser = (User)intent.getSerializableExtra("user");
-
         initDatabases();
         initButtons();
-
-
-
         renderUsersPhoneTable();
     }
 
@@ -201,11 +195,11 @@ public class contacts extends AppCompatActivity {
             contactParking.setKeyListener(null);
             contactGarage.setKeyListener(null);
         }
-
-        contactName.setText(mUser.usernameHeb);
-        contactPhone.setText(mUser.phone);
-        contactParking.setText(mUser.parking);
-        contactGarage.setText(mUser.storage);
+        final User currUser = usersMap.get(mUser.username);
+        contactName.setText(currUser.usernameHeb);
+        contactPhone.setText(currUser.phone);
+        contactParking.setText(currUser.parking);
+        contactGarage.setText(currUser.storage);
 
         alertDialogBuilder
                 .setView(dialogView)
@@ -221,8 +215,8 @@ public class contacts extends AppCompatActivity {
                 User user = new User(mUser.username,
                         contactName.getText().toString(),
                         contactPhone.getText().toString(),
-                        mUser.appartment,
-                        mUser.floor,
+                        currUser.appartment,
+                        currUser.floor,
                         contactParking.getText().toString(),
                         contactGarage.getText().toString(),
                         mUser.isManager,

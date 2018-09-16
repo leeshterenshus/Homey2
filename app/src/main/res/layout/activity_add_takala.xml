@@ -1,95 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/combo"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context="com.lee.minted.add_failure">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/back_bu2"
-            android:layout_width="34dp"
-            android:layout_height="38dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/transparent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back" />
+    <TextView
+        android:id="@+id/TV_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="הוספת תקלה"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/SPsubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:entries="@array/failures_title_array" />
 
         <TextView
-            android:id="@+id/new_tluna_title"
-            android:layout_width="wrap_content"
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/frameLayout3"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="37dp"
-            android:gravity="center"
-            android:text="@string/add_tluna"
-            android:textSize="36dip"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_weight="3"
+            android:text="סטטוס:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/frameLayout3"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="123dp"
-            android:background="@drawable/half">
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="תוכן:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btn_ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/frameLayout3"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="130dp"
-                android:layout_marginTop="210dp"
-                android:text="אישור"
-                tools:layout_editor_absoluteX="162dp"
-                tools:layout_editor_absoluteY="513dp" />
+    <EditText
+        android:id="@+id/ETmsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="14sp" />
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="45dp"
-                android:entries="@array/unitmeasurs" />
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="280dp"
-                android:layout_marginTop="100dp"
-                android:text="תוכן"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="280dp"
-                android:layout_marginTop="45dp"
-                android:text="נושא"
-                android:textSize="18sp" />
-        </FrameLayout>
-
-    </RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

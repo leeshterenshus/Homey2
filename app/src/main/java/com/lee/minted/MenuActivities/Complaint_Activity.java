@@ -196,11 +196,13 @@ public class Complaint_Activity extends AppCompatActivity {
         alertDialog.show();
     }
 
+
+
     private void updateComplaintIssue(String issue){
         mComplaintIssue= issue;
     }
 
-    private void addComplaintToView(ComplaintForm copmplaintText){
+    private void addComplaintToView(ComplaintForm complaintText){
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.compainsSV);
 
         Space space = new Space(Complaint_Activity.this);
@@ -214,10 +216,10 @@ public class Complaint_Activity extends AppCompatActivity {
             switch(i){
                 case 0:
                     txt.setTypeface(null, Typeface.BOLD);
-                    txt.setText(copmplaintText.message);
+                    txt.setText(complaintText.message);
                     break;
                 case 1:
-                    txt.setText("סטטוס: טרם טופל");
+                    txt.setText("סטטוס: "+complaintText.status);
                     break;
                 case 2:
                     txt.setText("תאריך: "+getDate());
