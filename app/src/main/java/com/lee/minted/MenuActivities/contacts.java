@@ -10,9 +10,11 @@ import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Space;
@@ -56,7 +58,7 @@ public class contacts extends AppCompatActivity {
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editProfile();
+                editProfile(mUser);
             }
         });
 
@@ -152,11 +154,16 @@ public class contacts extends AppCompatActivity {
             if (username.equals(mUser.username)) continue;
 
             TextView txt = new TextView(contacts.this);
-            User user = usersMap.get(username);
+            final User user = usersMap.get(username);
+
             String userDetails ="<b>"+ "דירה "+ user.appartment + "</b>" +", קומה " +user.floor+"\n"+"<br/>"+
                     "<b>"+"איש קשר: "+"</b>"+user.usernameHeb;
             if (mUser.isManager){
                 userDetails+="<br/>"+"<b>"+ "\nטלפון: "+"</b>"+user.phone+"<br/>"+"<b>"+"\nחניה: "+"</b>"+user.parking+"<br/>"+"<b>"+"\nמחסן: "+"</b>"+user.storage;
+            } else{
+                if (user.showPhone){
+                    userDetails+="<br/>"+"<b>"+ "\nטלפון: "+"</b>"+user.phone;
+                }
             }
             txt.setText(Html.fromHtml(userDetails));
             txt.setLayoutParams(new LinearLayout.LayoutParams(
@@ -164,6 +171,18 @@ public class contacts extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             txt.setTextSize(18);
             txt.setBackgroundColor(Color.WHITE);
+            ImageButton editBtn = new ImageButton(contacts.this);
+            editBtn.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.FILL_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            editBtn.setImageResource(R.drawable.pencil);
+            editBtn.setBackgroundColor(Color.WHITE);
+            editBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    editProfile(user);
+                }
+            });
             Space space = new Space(contacts.this);
             space.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.FILL_PARENT,
@@ -171,12 +190,14 @@ public class contacts extends AppCompatActivity {
             if (userDetails.contains(mSearchString)){
                 linearLayout.addView(space);
                 linearLayout.addView(txt);
+                if (mUser.isManager)
+                    linearLayout.addView(editBtn);
             }
 
         }
     }
 
-    private void editProfile(){
+    private void editProfile(final User user){
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(contacts.this);
 
         alertDialogBuilder.setTitle("עריכת פרופיל");
@@ -195,11 +216,11 @@ public class contacts extends AppCompatActivity {
             contactParking.setKeyListener(null);
             contactGarage.setKeyListener(null);
         }
-        final User currUser = usersMap.get(mUser.username);
-        contactName.setText(currUser.usernameHeb);
-        contactPhone.setText(currUser.phone);
-        contactParking.setText(currUser.parking);
-        contactGarage.setText(currUser.storage);
+        contactName.setText(user.usernameHeb);
+        contactPhone.setText(user.phone);
+        contactParking.setText(user.parking);
+        contactGarage.setText(user.storage);
+        showPhone.setChecked(user.showPhone);
 
         alertDialogBuilder
                 .setView(dialogView)
@@ -212,16 +233,16 @@ public class contacts extends AppCompatActivity {
         btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User(mUser.username,
+                User updatedUser = new User(user.username,
                         contactName.getText().toString(),
                         contactPhone.getText().toString(),
-                        currUser.appartment,
-                        currUser.floor,
+                        user.appartment,
+                        user.floor,
                         contactParking.getText().toString(),
                         contactGarage.getText().toString(),
-                        mUser.isManager,
+                        user.isManager,
                         showPhone.isChecked() );
-                mUsersRef.child(mUser.appartment).setValue(user);
+                mUsersRef.child(user.appartment).setValue(updatedUser);
                 alertDialog.dismiss();
             }
         });

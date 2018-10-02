@@ -12,9 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.Space;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -49,6 +51,7 @@ public class failures extends AppCompatActivity {
     private User mUser;
     private String TAG = "Failures_Activity";
     HashMap<String,FailureForm> mFailuresFormHash = new HashMap<String,FailureForm>();
+    private String mSearchString = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class failures extends AppCompatActivity {
         Intent intent = getIntent();
         mUser = (User)intent.getSerializableExtra("user");
         setOnClickListeners();
+        initButtons();
         initDatabases();
 
     }
@@ -126,7 +130,7 @@ public class failures extends AppCompatActivity {
     private void popupFailureDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(failures.this);
 
-        alertDialogBuilder.setTitle("תקלה חדשה");
+//        alertDialogBuilder.setTitle("תקלה חדשה");
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView= inflater.inflate(R.layout.activity_add_takala, null);
 
@@ -172,7 +176,60 @@ public class failures extends AppCompatActivity {
         alertDialog.show();
     }
 
+    private void updateFailureDialog(final String date, final String message, String status) {
+        if (!mUser.isManager){
+            return;
+        }
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(failures.this);
+//        alertDialogBuilder.setTitle("עדכון תקלה");
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView= inflater.inflate(R.layout.activity_add_takala, null);
+        TextView tvTitle = (TextView)dialogView.findViewById(R.id.TV_title);
+        tvTitle.setText("עדכון תקלה");
 
+        final EditText etMessage = (EditText)dialogView.findViewById(R.id.ETmsg);
+        etMessage.setText(message);
+        final String[] failureStatus = new String[1];
+
+        Spinner spinner = (Spinner) dialogView.findViewById(R.id.SPsubject);
+        spinner.setPrompt(status);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                failureStatus[0] = adapterView.getItemAtPosition(pos).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                failureStatus[0] = adapterView.getItemAtPosition(0).toString();
+            }
+        });
+
+        alertDialogBuilder
+                .setView(dialogView)
+                .setCancelable(false)
+                .setPositiveButton("אשר",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        String failureMessage = etMessage.getText().toString();
+                        FailureForm cf = new FailureForm(getDate(), failureMessage, failureStatus[0]);
+                        mRef.child(date).setValue(cf);
+
+                        // if this button is clicked, close
+                        // current activity
+
+                    }
+                })
+                .setNegativeButton("בטל",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
 
 
 
@@ -203,12 +260,17 @@ public class failures extends AppCompatActivity {
         }
         Collections.reverse(failureList);
         for(FailureForm cf :failureList ){
-            addFailureToView(cf);
+            if (cf.issue.contains(mSearchString) ||
+                cf.date.contains(mSearchString) ||
+                cf.status.contains(mSearchString)){
+                    addFailureToView(cf);
+            }
         }
     }
 
     private void addFailureToView(FailureForm failureForm){
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.failuresScrollView);
+//        LinearLayout linearLayoutTemp = new LinearLayout(failures.this);
 
         Space space = new Space(failures.this);
         space.setLayoutParams(new LinearLayout.LayoutParams(
@@ -216,28 +278,88 @@ public class failures extends AppCompatActivity {
                 15));
         linearLayout.addView(space);
 
-        for (int i=0; i<3; i++){
-            TextView txt = new TextView(failures.this);
-            switch(i){
-                case 0:
-                    txt.setTypeface(null, Typeface.BOLD);
-                    txt.setText(failureForm.issue);
-                    break;
-                case 1:
-                    txt.setText("סטטוס:"+failureForm.status);
-                    break;
-                case 2:
-                    txt.setText("תאריך: "+failureForm.date);
-                    break;
-            }
-            txt.setLayoutParams(new LinearLayout.LayoutParams(
+        final TextView txtIssue = new TextView(failures.this);
+        txtIssue.setTypeface(null, Typeface.BOLD);
+        txtIssue.setText(failureForm.issue);
+        txtIssue.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.FILL_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
-            txt.setBackgroundColor(Color.WHITE);
-            linearLayout.addView(txt);
+        txtIssue.setBackgroundColor(Color.WHITE);
+        linearLayout.addView(txtIssue);
 
+        final TextView txtStatus = new TextView(failures.this);
+        txtStatus.setText("סטטוס:"+failureForm.status);
+        txtStatus.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.FILL_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+        txtStatus.setBackgroundColor(Color.WHITE);
+        linearLayout.addView(txtStatus);
 
+        final TextView txtDate = new TextView(failures.this);
+        txtDate.setText("תאריך: "+failureForm.date);
+        txtDate.setLayoutParams(new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.FILL_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT));
+        txtDate.setBackgroundColor(Color.WHITE);
+        String relevantKey = "";
+        for(String key: mFailuresFormHash.keySet()) {
+            if(mFailuresFormHash.get(key).equals(failureForm)) {
+                relevantKey = key;
+            }
         }
+
+        final String finalRelevantKey = relevantKey;
+        txtIssue.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                updateFailureDialog(finalRelevantKey,txtIssue.getText().toString(),txtStatus.getText().toString());
+                return false;
+            }
+        });
+
+        txtDate.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                updateFailureDialog(finalRelevantKey,txtIssue.getText().toString(),txtStatus.getText().toString());
+                return false;
+            }
+        });
+
+        txtStatus.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                updateFailureDialog(finalRelevantKey,txtIssue.getText().toString(),txtStatus.getText().toString());
+                return false;
+            }
+        });
+
+        linearLayout.addView(txtDate);
+
+    }
+
+
+
+    private void initButtons() {
+
+        LinearLayout addFailureBtn = (LinearLayout)findViewById(R.id.llAddFailure);
+        if (!mUser.isManager)
+            addFailureBtn.setVisibility(View.GONE);
+        final SearchView searchView = (SearchView)findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mSearchString = query;
+                renderView();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mSearchString = newText;
+                renderView();
+                return false;
+            }
+        });
     }
 
 }

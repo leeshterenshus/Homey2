@@ -263,6 +263,8 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
         mComplaintIssue= issue;
     }
 
+
+
     private void addComplaintToView(final ComplaintForm complain){
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.compainsSV);
 

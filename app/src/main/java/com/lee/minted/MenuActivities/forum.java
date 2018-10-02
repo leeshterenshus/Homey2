@@ -71,7 +71,7 @@ public class forum extends AppCompatActivity {
 
     private void initDatabases() {
         mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference("Forum");
+        mRef = mDatabase.getReference("Forum/");
 
         ChildEventListener usersChildEventListener = new ChildEventListener() {
             @Override
@@ -160,7 +160,7 @@ public class forum extends AppCompatActivity {
                     public void onClick(DialogInterface dialog,int id) {
                         String filledInMsg = message.getText().toString();
                         String filledInTitle = title.getText().toString();
-                        ForumForm f = new ForumForm(getDate(), mUser.appartment, filledInTitle,filledInMsg);
+                        ForumForm f = new ForumForm(getDate(), mUser.appartment, filledInTitle,filledInMsg, null);
                         writeNewMessage(f);
 
                         // if this button is clicked, close
@@ -204,25 +204,40 @@ public class forum extends AppCompatActivity {
         txt1.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        txt1.setBackgroundColor(Color.WHITE);
+//        txt1.setBackgroundColor(Color.WHITE);
 
         TextView txt2 = new TextView(forum.this);
         txt2.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        txt2.setBackgroundColor(Color.WHITE);
+//        txt2.setBackgroundColor(Color.WHITE);
         txt2.setText("דירה: "+message.appartment);
 
         TextView txt3 = new TextView(forum.this);
         txt3.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-        txt3.setBackgroundColor(Color.WHITE);
+//        txt3.setBackgroundColor(Color.WHITE);
         txt3.setText("תאריך: "+message.date);
+
+        ImageButton editBtn = new ImageButton(forum.this);
+        editBtn.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        editBtn.setImageResource(R.drawable.reply);
+        editBtn.setBackgroundColor(Color.WHITE);
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                editProfile(user);
+            }
+        });
 
         llText.addView(txt1);
         llText.addView(txt2);
         llText.addView(txt3);
+
+        llText.setBackgroundColor((mUser.appartment.equals(message.appartment))?Color.GREEN:Color.WHITE);
 
         llText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,7 +249,7 @@ public class forum extends AppCompatActivity {
                     txt.setLayoutParams(new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.FILL_PARENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT));
-                    txt.setBackgroundColor(Color.WHITE);
+//                    txt.setBackgroundColor(Color.WHITE);
                     txt.setText(message.message);
                     llText.addView(txt,1);
                 }
@@ -242,43 +257,6 @@ public class forum extends AppCompatActivity {
         });
 
 
-//        for (int i=0; i<3; i++){
-//            final
-//            switch(i){
-//                case 0:
-////                    txt.setTypeface(null, Typeface.BOLD);
-//
-//                    txt.setOnTouchListener(new View.OnTouchListener() {
-//                        @Override
-//                        public boolean onTouch(View v, MotionEvent event) {
-//                            String sourceString = message.header + "\n" + message.message;
-//                            if (txt.getText().toString().equals(sourceString))
-//                                txt.setText(message.header);
-//                            else
-//                                txt.setText(sourceString);
-//                            return false;
-//                        }
-//                    });
-//                    break;
-//                case 1:
-//                    txt.setText("דירה: "+message.appartment);
-//                    break;
-//                case 2:
-//                    txt.setText("תאריך: "+message.date);
-//                    break;
-//            }
-//            txt.setLayoutParams(new LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.FILL_PARENT,
-//                    LinearLayout.LayoutParams.WRAP_CONTENT));
-//            txt.setBackgroundColor(Color.WHITE);
-////            txt.setOnTouchListener(new View.OnTouchListener() {
-////                @Override
-////                public boolean onTouch(View v, MotionEvent event) {
-////                    String toastMsg = "date: "+complain.date+", do you want to delete me?";
-////                    Toast.makeText(Complaint_Manager_Activity.this,toastMsg,Toast.LENGTH_SHORT).show();
-////                    return false;
-////                }
-////            });
             linearLayout.addView(llText);
 
 
