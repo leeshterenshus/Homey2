@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lee.minted.Clases.ComplaintForm;
 import com.lee.minted.Clases.ForumForm;
+import com.lee.minted.Clases.ForumMessageForm;
 import com.lee.minted.Clases.User;
 import com.lee.minted.R;
 
@@ -126,20 +127,61 @@ public class forum extends AppCompatActivity {
 
 
     private void setOnClickListeners(){
-
-
-
-        FloatingActionButton FAB_AddComplaint = (FloatingActionButton)findViewById(R.id.FAB_AddForumMsg);
-        FAB_AddComplaint.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton FAB_AddForumMsg = (FloatingActionButton)findViewById(R.id.FAB_AddForumMsg);
+        FAB_AddForumMsg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addComplaint();
+                addForumMessage();
             }
         });
     }
 
 
-    private void addComplaint(){
+    private void addReplyForumMessage(final ForumForm forumForm){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(forum.this);
+
+        alertDialogBuilder.setTitle("הוסף תגובה");
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView= inflater.inflate(R.layout.adding_forum_msg, null);
+
+        TextView TV_date = (TextView) dialogView.findViewById(R.id.TV_date);
+        String dateTitle = "יום "+getDayInWeek()+"' "+ getDate();
+        TV_date.setText(dateTitle);
+
+        final EditText title = (EditText)dialogView.findViewById(R.id.etTitle);
+        final EditText message = (EditText)dialogView.findViewById(R.id.etMessage);
+
+        alertDialogBuilder
+                .setView(dialogView)
+                .setCancelable(false)
+                .setPositiveButton("אשר",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        String filledInMsg = message.getText().toString();
+                        String filledInTitle = title.getText().toString();
+                        ForumMessageForm f = new ForumMessageForm(getDate(), mUser.appartment, filledInTitle,filledInMsg);
+                        forumForm.followingMessagedList.add(f);
+
+                        updateMessage(forumForm);
+
+                        // if this button is clicked, close
+                        // current activity
+
+                    }
+                })
+                .setNegativeButton("בטל",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+
+    private void addForumMessage(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(forum.this);
 
         alertDialogBuilder.setTitle("הודעה חדשה");
@@ -184,7 +226,7 @@ public class forum extends AppCompatActivity {
         mForumMsg = issue;
     }
 
-    private void addMessageToView(final ForumForm message){
+    private void addMessageToView(final ForumForm forumForm){
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.SVforum);
 
         Space space = new Space(forum.this);
@@ -198,9 +240,10 @@ public class forum extends AppCompatActivity {
 
 
         TextView txt1 = new TextView(forum.this);
-        txt1.setText(message.header);
+        txt1.setText(forumForm.header);
         txt1.setTypeface(null, Typeface.BOLD);
         txt1.setTextSize(15);
+        txt1.setTextColor(Color.WHITE);
         txt1.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -211,14 +254,18 @@ public class forum extends AppCompatActivity {
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 //        txt2.setBackgroundColor(Color.WHITE);
-        txt2.setText("דירה: "+message.appartment);
+        txt2.setText("דירה: "+forumForm.appartment);
+        txt2.setTextColor(Color.WHITE);
+
 
         TextView txt3 = new TextView(forum.this);
         txt3.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 //        txt3.setBackgroundColor(Color.WHITE);
-        txt3.setText("תאריך: "+message.date);
+        txt3.setText("תאריך: "+forumForm.date);
+        txt3.setTextColor(Color.WHITE);
+
 
         ImageButton editBtn = new ImageButton(forum.this);
         editBtn.setLayoutParams(new LinearLayout.LayoutParams(
@@ -229,15 +276,20 @@ public class forum extends AppCompatActivity {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                editProfile(user);
+                addReplyForumMessage(forumForm);
             }
         });
+//        editBtn.setBackgroundColor((mUser.appartment.equals(message.appartment))?Color.BLUE:Color.WHITE);
+        editBtn.setBackgroundColor(Color.rgb(0,191,255));
 
         llText.addView(txt1);
         llText.addView(txt2);
         llText.addView(txt3);
+        llText.addView(editBtn);
 
-        llText.setBackgroundColor((mUser.appartment.equals(message.appartment))?Color.GREEN:Color.WHITE);
+
+//        llText.setBackgroundColor((mUser.appartment.equals(message.appartment))?Color.BLUE:Color.WHITE);
+        llText.setBackgroundColor(Color.rgb(0,191,255));
 
         llText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,20 +299,83 @@ public class forum extends AppCompatActivity {
                 } else {
                     final TextView txt = new TextView(forum.this);
                     txt.setLayoutParams(new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.FILL_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT));
 //                    txt.setBackgroundColor(Color.WHITE);
-                    txt.setText(message.message);
+                    txt.setText(forumForm.message);
                     llText.addView(txt,1);
                 }
             }
         });
 
-
+        llText.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
             linearLayout.addView(llText);
+        addFollowingMessagesToView(forumForm);
 
 
 //        }
+    }
+
+    private void addFollowingMessagesToView(final ForumForm forumForm){
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.SVforum);
+        for (final ForumMessageForm fmf: forumForm.followingMessagedList){
+
+            Space space = new Space(forum.this);
+            space.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.FILL_PARENT,
+                    15));
+            linearLayout.addView(space);
+
+            final LinearLayout llText = new LinearLayout(forum.this);
+            llText.setOrientation(LinearLayout.VERTICAL);
+
+
+            TextView txt1 = new TextView(forum.this);
+            txt1.setText(fmf.header);
+            txt1.setTypeface(null, Typeface.BOLD);
+            txt1.setTextSize(15);
+            txt1.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.FILL_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+
+            TextView txt2 = new TextView(forum.this);
+            txt2.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.FILL_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            txt2.setText("דירה: "+fmf.appartment);
+
+
+            TextView txt3 = new TextView(forum.this);
+            txt3.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.FILL_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            txt3.setText("תאריך: "+fmf.date);
+
+            llText.addView(txt1);
+            llText.addView(txt2);
+            llText.addView(txt3);
+
+            llText.setBackgroundColor(Color.WHITE);
+
+            llText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (llText.getChildCount() == 4) {
+                        llText.removeViewAt(1);
+                    } else {
+                        final TextView txt = new TextView(forum.this);
+                        txt.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.FILL_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT));
+                        txt.setText(fmf.message);
+                        llText.addView(txt,1);
+                    }
+                }
+            });
+            linearLayout.addView(llText);
+        }
     }
 
     private void renderView(){
@@ -302,6 +417,18 @@ public class forum extends AppCompatActivity {
 
     private void writeNewMessage(ForumForm f) {
         mRef.child(getTime()).setValue(f);
+    }
+
+    private void updateMessage(ForumForm f) {
+        //run on hash to get key
+        String relevantKey = "";
+        for (String key: mForumFormHash.keySet()){
+            if (mForumFormHash.get(key)==f){
+                relevantKey = key;
+                break;
+            }
+        }
+        mRef.child(relevantKey).setValue(f);
     }
 
 
