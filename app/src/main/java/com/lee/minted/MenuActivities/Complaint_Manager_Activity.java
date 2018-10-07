@@ -201,6 +201,76 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    private void updateComplaintDialog(final ComplaintForm f) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Complaint_Manager_Activity.this);
+
+        alertDialogBuilder.setTitle("עדכון תקלה");
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView= inflater.inflate(R.layout.adding_complaint_layout, null);
+
+        TextView TV_date = (TextView) dialogView.findViewById(R.id.TV_date);
+        String dateTitle = "יום "+getDayInWeek()+"' "+ getDate();
+        TV_date.setText(dateTitle);
+
+        final EditText complaintTV = (EditText)dialogView.findViewById(R.id.ETmsg);
+        final EditText statusET = (EditText)dialogView.findViewById(R.id.ETstatus);
+        final EditText TVappartmentNum = (EditText)dialogView.findViewById(R.id.TVappartmentNum);
+        TVappartmentNum.setText(f.appartment);
+        complaintTV.setText(f.issue);
+        statusET.setText(f.status);
+
+        final Spinner spinner = (Spinner) dialogView.findViewById(R.id.SPsubject);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+//                Toast.makeText(adapterView.getContext(),
+//                        "OnItemSelectedListener : " + adapterView.getItemAtPosition(pos).toString(),
+//                        Toast.LENGTH_SHORT).show();
+                updateComplaintIssue(adapterView.getItemAtPosition(pos).toString());
+//                complaintIssue[0] = adapterView.getItemAtPosition(pos).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        int pos =0;
+        for (int i = 0; i< spinner.getAdapter().getCount(); i++){
+            if (f.status.equals(spinner.getAdapter().getItem(i)))
+                pos = i;
+        }
+        spinner.setSelection(pos);
+
+        alertDialogBuilder
+                .setView(dialogView)
+                .setCancelable(true)
+                .setPositiveButton("אשר",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        String msg = complaintTV.getText().toString();
+                        String status = statusET.getText().toString();
+                        ComplaintForm cf = new ComplaintForm(f.date, f.appartment, mComplaintIssue, msg,status);
+                        updateComplaint(cf);
+
+                        // if this button is clicked, close
+                        // current activity
+
+                    }
+                })
+                .setNegativeButton("בטל",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+
 
     private void addComplaint(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Complaint_Manager_Activity.this);
@@ -214,6 +284,8 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
         TV_date.setText(dateTitle);
 
         final EditText complaintTV = (EditText)dialogView.findViewById(R.id.ETmsg);
+        final EditText TVappartmentNum = (EditText)dialogView.findViewById(R.id.TVappartmentNum);
+        TVappartmentNum.setText(mUser.appartment);
 
         Spinner spinner = (Spinner) dialogView.findViewById(R.id.SPsubject);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -274,7 +346,7 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
                 25));
         linearLayout.addView(space);
 
-        for (int i=0; i<3; i++){
+        for (int i=0; i<4; i++){
             TextView txt = new TextView(Complaint_Manager_Activity.this);
             switch(i){
                 case 0:
@@ -283,9 +355,12 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
                     txt.setTextSize(15);
                     break;
                 case 1:
-                    txt.setText("דירה: "+complain.appartment);
+                    txt.setText("סטטוס: "+complain.status);
                     break;
                 case 2:
+                    txt.setText("דירה: "+complain.appartment);
+                    break;
+                case 3:
                     txt.setText("תאריך: "+complain.date);
                     break;
             }
@@ -293,6 +368,13 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
                     LinearLayout.LayoutParams.FILL_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             txt.setBackgroundColor(Color.WHITE);
+            txt.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    updateComplaintDialog(complain);
+                    return false;
+                }
+            });
 //            txt.setOnTouchListener(new View.OnTouchListener() {
 //                @Override
 //                public boolean onTouch(View v, MotionEvent event) {
@@ -311,7 +393,7 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FailureForm f = new FailureForm(complain.date, complain.message, null);
+                FailureForm f = new FailureForm(complain.date, complain.message, complain.status);
                 popupFailureDialog(f);
             }
         });
@@ -365,6 +447,17 @@ public class Complaint_Manager_Activity extends AppCompatActivity {
 
     private void writeNewComplaint(ComplaintForm cf) {
         mRef.child(String.valueOf(cf.appartment)).child(getTime()).setValue(cf);
+    }
+
+    private void updateComplaint(ComplaintForm cf) {
+        String key = "";
+        for (String s: mComplaintFormHash.keySet()){
+            if (mComplaintFormHash.get(s).appartment.equals(cf.appartment) && mComplaintFormHash.get(s).date.equals(cf.date)){
+                key = s;
+                break;
+            }
+        }
+        mRef.child(String.valueOf(cf.appartment)).child(key).setValue(cf);
     }
 
 

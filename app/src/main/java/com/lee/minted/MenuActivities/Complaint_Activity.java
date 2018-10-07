@@ -151,6 +151,8 @@ public class Complaint_Activity extends AppCompatActivity {
         TV_date.setText(dateTitle);
 
         final EditText complaintTV = (EditText)dialogView.findViewById(R.id.ETmsg);
+        final EditText TVappartmentNum = (EditText)dialogView.findViewById(R.id.TVappartmentNum);
+        TVappartmentNum.setText(mUser.appartment);
 
         Spinner spinner = (Spinner) dialogView.findViewById(R.id.SPsubject);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

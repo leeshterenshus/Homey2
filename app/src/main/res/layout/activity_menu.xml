@@ -43,23 +43,54 @@
         android:background="@android:color/transparent"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/btn_complaints"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:alpha=".90"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/tlunot" />
+            android:layout_weight="1">
 
-        <ImageButton
-            android:id="@+id/btn_failures"
+            <Button
+                android:id="@+id/complaints_number_btn"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/red_circle"
+                android:text="5"
+                android:textColor="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/btn_complaints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:alpha=".90"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/tlunot" />
+
+        </FrameLayout>
+
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:alpha=".90"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/takala" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/failures_number_btn2"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/red_circle"
+                android:text="5"
+                android:textColor="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/btn_failures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:alpha=".90"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/takala" />
+        </FrameLayout>
 
         <ImageButton
             android:id="@+id/btn_contacts"

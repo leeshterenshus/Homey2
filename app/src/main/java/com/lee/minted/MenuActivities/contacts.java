@@ -151,7 +151,10 @@ public class contacts extends AppCompatActivity {
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.scrollViewLiniarLayout);
         linearLayout.removeAllViews();
         for (String username : usersMap.keySet()){
-            if (username.equals(mUser.username)) continue;
+            if (username.equals(mUser.username)) {
+                mUser = usersMap.get(username);
+            continue;
+            }
 
             TextView txt = new TextView(contacts.this);
             final User user = usersMap.get(username);
@@ -224,7 +227,7 @@ public class contacts extends AppCompatActivity {
 
         alertDialogBuilder
                 .setView(dialogView)
-                .setCancelable(false);
+                .setCancelable(true);
 
 
         final AlertDialog alertDialog = alertDialogBuilder.create();
