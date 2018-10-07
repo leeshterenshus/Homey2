@@ -48,14 +48,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <Button
+            <!--Button
                 android:id="@+id/complaints_number_btn"
                 android:layout_width="25dp"
                 android:layout_height="22dp"
                 android:layout_marginLeft="15dp"
                 android:background="@drawable/red_circle"
                 android:text="5"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white" /-->
 
             <ImageButton
                 android:id="@+id/btn_complaints"
@@ -74,7 +74,7 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/failures_number_btn2"
+                android:id="@+id/failures_number_btn"
                 android:layout_width="25dp"
                 android:layout_height="22dp"
                 android:layout_marginLeft="15dp"

@@ -67,6 +67,22 @@ public class failures extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        String max = "-1";
+        for (String s: mFailuresFormHash.keySet()){
+            if (Long.valueOf(s)>Long.valueOf(max)){
+                max = s;
+            }
+        }
+        mUser.setLastFailure(max);
+        DatabaseReference usersRef = mDatabase.getReference("users");
+        usersRef.child(mUser.appartment).setValue(mUser);
+        finish();
+    }
+
+
     private void initDatabases() {
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Failures/");
@@ -361,5 +377,7 @@ public class failures extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

@@ -14,6 +14,7 @@ public class User implements Serializable{
     public String storage;
     public boolean isManager;
     public boolean showPhone;
+    public String lastFailureSeen = "-1";
 
 
     public User() {
@@ -30,6 +31,10 @@ public class User implements Serializable{
         this.parking = parking;
         this.storage = storage;
         this.showPhone = showPhone;
+    }
+
+    public void setLastFailure(String failureId){
+     this.lastFailureSeen = failureId;
     }
 
 }

@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,10 +16,18 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.lee.minted.Clases.FailureForm;
 import com.lee.minted.Clases.IncomEAndExpencesForm;
 import com.lee.minted.Clases.User;
 import com.lee.minted.R;
 
+import java.util.HashMap;
 
 
 public class Menu_Activity extends AppCompatActivity {
@@ -34,6 +44,9 @@ public class Menu_Activity extends AppCompatActivity {
     private ImageButton btn_payment;
     private ImageButton btn_info;
 
+    HashMap<String,FailureForm> mFailuresFormHash = new HashMap<String,FailureForm>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +55,13 @@ public class Menu_Activity extends AppCompatActivity {
         Intent intent = getIntent();
         mUser = (User)intent.getSerializableExtra("user");
 
+        initFailureDatabase();
         initButtons();
         setOnClickListeners();
         displayManagerIcons();
+
+        renderFailureView();
+
 
     }
 
@@ -158,6 +175,81 @@ public class Menu_Activity extends AppCompatActivity {
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+
+    private void initFailureDatabase() {
+        FirebaseDatabase Database = FirebaseDatabase.getInstance();
+        DatabaseReference Ref = Database.getReference("Failures/");
+
+        ChildEventListener usersChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                FailureForm f = dataSnapshot.getValue(FailureForm.class);
+                mFailuresFormHash.put(dataSnapshot.getKey(), f);
+                renderFailureView();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+                FailureForm f = dataSnapshot.getValue(FailureForm.class);
+                mFailuresFormHash.put(dataSnapshot.getKey(), f);
+                renderFailureView();
+                // ...
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                mFailuresFormHash.remove(dataSnapshot.getKey());
+                renderFailureView();
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+                FailureForm f = dataSnapshot.getValue(FailureForm.class);
+                mFailuresFormHash.put(dataSnapshot.getKey(), f);
+                renderFailureView();
+
+                // ...
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        Ref.addChildEventListener(usersChildEventListener);
+
+
+        DatabaseReference userRef;
+        userRef = Database.getReference("users/"+mUser.appartment);
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mUser =  dataSnapshot.getValue(User.class);
+                renderFailureView();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void renderFailureView() {
+        Button failures_number_btn = (Button)findViewById(R.id.failures_number_btn);
+        failures_number_btn.setClickable(false);
+        int i = 0;
+        for (String s: mFailuresFormHash.keySet()){
+            if (Long.valueOf(s)>Long.valueOf(mUser.lastFailureSeen)){
+                i++;
+            }
+        }
+        if (i==0){
+            failures_number_btn.setVisibility(View.INVISIBLE);
+        } else {
+            failures_number_btn.setVisibility(View.VISIBLE);
+            failures_number_btn.setText(String.valueOf(i));
+        }
     }
 
 
