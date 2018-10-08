@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
-        android:text="פה צריך למלא חוקים של הקבוצה"
+        android:text="פונקציות האפליקציה נועדו לשמש את המשתמשים וליצור קהילת דיירים וראייה שקופה. בהתאם לכך מתחייב כל משתמש שלא למסור מידע כוזב או לשלוח הודעות סרק במטרה להטעות את שאר המשתמשים. אסורה שליחת הודעות פוגעניות או הודעות בעלי תוכן בלתי הולם "
         android:textAlignment="center" />
 
     <TextView
