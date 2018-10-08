@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
-        android:text="פה צריך למלא את המידע על האפליקציה,"
+        android:text="אפליקציה לניהול ועד בית מצד הועד ומצד הדייר,"
         android:textAlignment="center" />
 
     <TextView
