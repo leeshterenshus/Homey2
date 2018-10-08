@@ -299,7 +299,7 @@ public class forum extends AppCompatActivity {
                 } else {
                     final TextView txt = new TextView(forum.this);
                     txt.setLayoutParams(new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.FILL_PARENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT));
 //                    txt.setBackgroundColor(Color.WHITE);
                     txt.setText(forumForm.message);
@@ -309,7 +309,7 @@ public class forum extends AppCompatActivity {
         });
 
         llText.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
             linearLayout.addView(llText);
         addFollowingMessagesToView(forumForm);
